@@ -1,3 +1,5 @@
+> Bản cập nhật hiện tại: THANH V8. Dữ liệu đã đồng bộ theo JSON chỉnh sửa và bổ sung tham khảo AI; giao diện kính và hero nền động chung. Xem hướng dẫn V8 trong gói bàn giao.
+
 # Cổng thông tin học tập · THANH (V3)
 
 Website học tập cá nhân của giảng viên Đoàn Tuấn Thanh. Đây là bộ mã nguồn **sẵn sàng triển khai trên GitHub Pages**; không cần build, backend hoặc API trả phí.
