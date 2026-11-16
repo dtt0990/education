@@ -147,6 +147,10 @@ function renderHome() {
       <div class="section-heading"><div><span class="eyebrow">${esc(C('labels','homeProgramsEyebrow','CHƯƠNG TRÌNH HỌC'))}</span><h2>${esc(C('home','catalogTitle','Chương trình học'))}</h2><p>${esc(C('home','catalogDescription','Chọn môn học để xem đề cương, bài giảng và tài nguyên đi kèm.'))}</p></div><a class="text-link" href="${routeHref('chuong-trinh.html')}">${esc(C('home','viewAll','Xem tất cả chương trình'))} ${icon('arrow')}</a></div>
       <div class="course-grid home-course-grid">${courses.map(c=>courseCard(c,true)).join('')}</div>
     </section>
+    <section class="home-social" aria-labelledby="social-title">
+      <div class="social-intro"><span class="eyebrow">CÙNG GIỮ KẾT NỐI</span><h2 id="social-title">${esc(DB.portal.social.title)}</h2><p>${esc(DB.portal.social.description)}</p></div>
+      <div class="social-grid">${[['linkedin','LinkedIn','in','linkedinUrl','linkedinDescription'],['facebook','Facebook','f','facebookUrl','facebookDescription']].map(([kind,label,mark,url,desc])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[url])}" target="_blank" rel="noopener noreferrer" aria-label="Kết nối qua ${label} (mở trong thẻ mới)"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-copy"><strong>${label}</strong><span>${esc(DB.portal.social[desc])}</span><small>Kết nối với Thanh Đoàn <span aria-hidden="true">↗</span></small></span><span class="social-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
+    </section>
   </div>`;
 }
 function renderAbout() {
