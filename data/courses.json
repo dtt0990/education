@@ -247,6 +247,14 @@
         "unknownPageTitle": "Chưa thể tải nội dung cổng thông tin",
         "unknownPageDescription": "Vui lòng tải lại trang hoặc kiểm tra file data/courses.json trong bộ website."
       }
+    },
+    "social": {
+      "title": "Kết nối và chia sẻ",
+      "description": "Tiếp nối câu chuyện học tập, nghề nghiệp và những trải nghiệm thực tế.",
+      "linkedinUrl": "https://www.linkedin.com/in/thanhdoan0990/",
+      "facebookUrl": "https://www.facebook.com/dtt0990",
+      "linkedinDescription": "Góc nhìn chuyên môn, marketing và hành trình phát triển nghề nghiệp.",
+      "facebookDescription": "Những chia sẻ gần gũi về công việc, giảng dạy và cuộc sống."
     }
   },
   "courses": [
