@@ -1,3 +1,42 @@
+
+let disposeHeroMotion = null;
+function setupHeroMotion() {
+  const video = $('.hero-motion');
+  const button = $('.hero-motion-toggle');
+  const visual = $('.home-hero');
+  if (!video || !visual) return;
+  const desktop = window.matchMedia('(min-width: 781px)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const connection = navigator.connection;
+  let userPaused = false, visible = true, disposed = false, failed = false;
+  const label = () => {
+    const paused = video.paused;
+    if (!button) return;
+    button.textContent = paused ? C('home','playMotion','Phát chuyển động') : C('home','pauseMotion','Tạm dừng');
+    button.setAttribute('aria-label', paused ? 'Phát video nền' : 'Tạm dừng video nền');
+  };
+  const sync = () => {
+    if (disposed) return;
+    const allowed = desktop.matches && !reduced.matches && !connection?.saveData && !failed;
+    if(button) button.hidden = !allowed;
+    if (!allowed) { video.pause(); visual.classList.remove('motion-ready'); return; }
+    if (document.hidden || !visible || userPaused) {video.pause(); return;}
+    if (!video.getAttribute('src')) video.src = video.dataset.src;
+    video.play().catch(() => { if(!disposed){visual.classList.remove('motion-ready'); label();} });
+  };
+  const playing = () => {if (!disposed) { visual.classList.add('motion-ready'); label(); }};
+  const pause = () => label();
+  const error = () => {failed=true;visual.classList.remove('motion-ready');if(button) button.hidden=true;};
+  const toggle = () => {userPaused=!video.paused;sync();};
+  video.addEventListener('playing',playing); video.addEventListener('pause',pause); video.addEventListener('error',error);
+  button?.addEventListener('click',toggle);
+  document.addEventListener('visibilitychange',sync);
+  desktop.addEventListener('change',sync); reduced.addEventListener('change',sync); connection?.addEventListener('change',sync);
+  const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {visible=entries[0].isIntersecting;sync();}, {threshold:0.05}) : null;
+  observer?.observe(visual);
+  disposeHeroMotion = () => {disposed=true;observer?.disconnect();video.pause();video.removeAttribute('src');video.load();document.removeEventListener('visibilitychange',sync);desktop.removeEventListener('change',sync);reduced.removeEventListener('change',sync);connection?.removeEventListener('change',sync);video.removeEventListener('playing',playing);video.removeEventListener('pause',pause);video.removeEventListener('error',error);button?.removeEventListener('click',toggle);};
+  sync();
+}
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -73,8 +112,8 @@ function renderHeader() {
   if (!header) return;
   header.innerHTML = `<header class="site-header"><div class="container header-inner">
     ${brandMarkup()}
-    <button class="nav-toggle" type="button" aria-label="${esc(C('labels','menuOpenAria','Mở menu'))}" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="main-nav" aria-label="${esc(C('labels','mainNavAria','Điều hướng chính'))}">${navItems.map(([id,url,label]) => `<a href="${routeHref(url)}" class="${active===id?'active':''}">${esc(label)}</a>`).join('')}</nav>
+    <button class="nav-toggle" type="button" aria-label="${esc(C('labels','menuOpenAria','Mở menu'))}" aria-expanded="false" aria-controls="mainNavigation"><span></span><span></span><span></span></button>
+    <nav id="mainNavigation" class="main-nav" aria-label="${esc(C('labels','mainNavAria','Điều hướng chính'))}">${navItems.map(([id,url,label]) => `<a href="${routeHref(url)}" class="${active===id?'active':''}" ${active===id?'aria-current="page"':''}>${esc(label)}</a>`).join('')}</nav>
     <a class="header-cta" href="${routeHref('lien-he.html')}">${esc(C('navigation','connect','Kết nối Zalo'))} ${icon('arrow')}</a>
   </div></header>`;
   const toggle = $('.nav-toggle', header), nav = $('.main-nav', header);
@@ -82,9 +121,13 @@ function renderHeader() {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
+  header.addEventListener('keydown', e => { if(e.key === 'Escape'){nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.focus();} });
   $$('.main-nav a', header).forEach(a => a.addEventListener('click', () => {
     nav.classList.remove('open'); toggle?.setAttribute('aria-expanded','false');
   }));
+}
+function readableText(value) {
+  return esc(value).replace(/(?<![\p{L}\p{N}])(bản\s+thân|cơ\s+sở|học\s+tập|thực\s+tế|tư\s+duy|giảng\s+dạy|nghiên\s+cứu)(?=$|[^\p{L}\p{N}])/giu, match => `<span class="keep-phrase">${match.replace(/\s+/g,' ')}</span>`);
 }
 function renderFooter() {
   const p = DB.portal || {}, t = p.teacher || {}, contact = p.contact || {};
@@ -96,12 +139,11 @@ function renderFooter() {
         <a href="${routeHref('index.html')}">${esc(C('navigation','home','Trang chủ'))}</a>
         <a href="${routeHref('gioi-thieu.html')}">${esc(C('navigation','about','Giới thiệu'))}</a>
         <a href="${routeHref('chuong-trinh.html')}">${esc(C('navigation','courses','Chương trình học'))}</a>
-        <a href="${routeHref('so-do-website.html')}">${esc(C('footer','sitemapLabel','Sơ đồ website'))}</a>
       </div>
       <div class="footer-column"><h3>${esc(C('footer','contactTitle','Kết nối'))}</h3>
         <a href="${routeHref('lien-he.html')}">${esc(C('navigation','contact','Liên hệ'))}</a>
-        ${contact.phone ? `<a href="tel:${esc(contact.phone)}">${esc(phoneDisplay(contact.phone))}</a>` : ''}
-        ${contact.zaloUrl ? `<a href="${esc(contact.zaloUrl)}" target="_blank" rel="noopener">${esc(C('footer','zaloLinkLabel','Zalo cá nhân'))} ↗</a>` : ''}
+        ${contact.phone ? `<a href="tel:${esc(contact.phone)}">${esc(C('footer','phoneLabel','Mobile/Zalo/Whatsapp: 0986 164 209'))}</a>` : ''}
+        ${contact.email ? `<a href="mailto:${esc(contact.email)}">${esc(C('footer','emailLabel','Email Giảng viên'))}</a>` : ''}
       </div>
     </div>
     <div class="footer-bottom"><span>© ${new Date().getFullYear()} ${esc(p.name || 'Cổng thông tin học tập')} · THANH</span><span>${esc(C('footer','ownerPrefix','Được xây dựng và quản lý bởi'))} <strong>${esc(t.name || p.owner || 'Đoàn Tuấn Thanh')}</strong>.</span></div>
@@ -109,7 +151,7 @@ function renderFooter() {
 }
 function courseCard(c, compact = false) {
   const locked = c.status !== 'open';
-  const image = c.coverImage ? `<img src="${esc(asset(c.coverImage))}" alt="${esc(c.title)}">` : `<div class="cover-placeholder">${icon('book')}</div>`;
+  const image = c.coverImage ? `<img src="${esc(asset(c.coverImage))}" alt="${esc(c.title)}" loading="lazy" decoding="async" width="900" height="600">` : `<div class="cover-placeholder">${icon('book')}</div>`;
   return `<a class="course-card ${locked?'is-locked':''} ${compact?'compact':''}" href="${courseUrl(c)}">
     <div class="course-cover">${image}<span class="course-number">${esc(c.number || '')}</span></div>
     <div class="course-body">
@@ -126,7 +168,9 @@ function renderHome() {
   const visual = DB.portal.visuals || {};
   const heroImage = visual.homeHero || featured?.coverImage || '';
   $('#homeContent').innerHTML = `<div class="container home-page">
-    <section class="home-hero">
+    <section class="home-hero"><div class="hero-backdrop" aria-hidden="true">        ${heroImage?`<img class="hero-photo" src="${esc(asset(heroImage))}" alt="${esc(C('home','heroImageAlt','Hình ảnh minh họa chương trình học'))}" fetchpriority="high">`:''}
+        ${visual.homeHeroVideo ? `<video class="hero-motion" muted loop playsinline preload="none" poster="${esc(asset(heroImage))}" data-src="${esc(asset(visual.homeHeroVideo))}" aria-hidden="true" tabindex="-1"></video>` : ''}
+</div>
       <div class="home-hero-copy">
         <div class="eyebrow">${esc(C('home','eyebrow','THANH · LEARNING PORTAL'))}</div>
         <h1>${esc(C('home','title','Học tập có định hướng. Thực hành có kết quả.'))}</h1>
@@ -137,8 +181,7 @@ function renderHome() {
         </div>
       </div>
       <div class="home-hero-visual">
-        ${heroImage?`<img class="hero-photo" src="${esc(asset(heroImage))}" alt="${esc(C('home','heroImageAlt','Hình ảnh minh họa chương trình học'))}" fetchpriority="high">`:''}
-        <div class="hero-photo-shade"></div>
+
         <div class="hero-visual-top"><span>THANH</span><span>${esc(C('labels','portalTagline','LEARNING PORTAL'))}</span></div>
         <div class="featured-course-chip"><span class="featured-dot"></span><div><small>${esc(C('home','featuredLabel','Môn học đang mở'))}</small><strong>${esc(featured?.shortTitle || featured?.title || '')}</strong><a href="${featured?courseUrl(featured):routeHref('chuong-trinh.html')}">${esc(C('home','featuredAction','Xem môn học'))} ${icon('arrow')}</a></div></div>
       </div>
@@ -147,9 +190,11 @@ function renderHome() {
       <div class="section-heading"><div><span class="eyebrow">${esc(C('labels','homeProgramsEyebrow','CHƯƠNG TRÌNH HỌC'))}</span><h2>${esc(C('home','catalogTitle','Chương trình học'))}</h2><p>${esc(C('home','catalogDescription','Chọn môn học để xem đề cương, bài giảng và tài nguyên đi kèm.'))}</p></div><a class="text-link" href="${routeHref('chuong-trinh.html')}">${esc(C('home','viewAll','Xem tất cả chương trình'))} ${icon('arrow')}</a></div>
       <div class="course-grid home-course-grid">${courses.map(c=>courseCard(c,true)).join('')}</div>
     </section>
+
     <section class="home-social" aria-labelledby="social-title">
-      <div class="social-intro"><span class="eyebrow">CÙNG GIỮ KẾT NỐI</span><h2 id="social-title">${esc(DB.portal.social.title)}</h2><p>${esc(DB.portal.social.description)}</p></div>
-      <div class="social-grid">${[['linkedin','LinkedIn','in','linkedinUrl','linkedinDescription'],['facebook','Facebook','f','facebookUrl','facebookDescription']].map(([kind,label,mark,url,desc])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[url])}" target="_blank" rel="noopener noreferrer" aria-label="Kết nối qua ${label} (mở trong thẻ mới)"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-copy"><strong>${label}</strong><span>${esc(DB.portal.social[desc])}</span><small>Kết nối với Thanh Đoàn <span aria-hidden="true">↗</span></small></span><span class="social-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
+      <div class="social-intro"><span class="eyebrow">${esc(DB.portal.social.eyebrow)}</span><h2 id="social-title">${esc(DB.portal.social.title)}</h2><p>${esc(DB.portal.social.description)}</p></div>
+      <div class="social-grid">${[['linkedin','LinkedIn','in'],['facebook','Facebook','f']].map(([kind,label,mark])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[kind+'Url'])}" target="_blank" rel="noopener noreferrer" aria-label="Kết nối qua ${label} (mở trong thẻ mới)"><div class="social-top"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-arrow" aria-hidden="true">↗</span></div><div class="social-art" aria-hidden="true"><p>${esc(DB.portal.social[kind+'Art'])}</p></div><div class="social-copy"><p class="social-eyebrow">${esc(DB.portal.social[kind+'Eyebrow'])}</p><h3>${label}</h3><strong class="social-count">${esc(DB.portal.social[kind+'Count'])}</strong><p class="social-count-label">${esc(DB.portal.social.followersLabel)}</p><p class="social-detail">${esc(DB.portal.social[kind+'Detail'])}</p><p class="social-description">${esc(DB.portal.social[kind+'Description'])}</p><small class="social-action">${esc(DB.portal.social.action)} <span aria-hidden="true">↗</span></small></div></a>`).join('')}</div>
+      <p class="social-updated">${esc(DB.portal.social.updatedLabel)}</p>
     </section>
   </div>`;
 }
@@ -161,13 +206,13 @@ function renderAbout() {
     <div class="page-intro"><div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span>${esc(C('navigation','about','Giới thiệu'))}</div><div class="eyebrow">${esc(C('about','eyebrow','GIẢNG VIÊN'))}</div><h1>${esc(C('about','title',t.name || 'Đoàn Tuấn Thanh'))}</h1><p>${esc(C('about','intro','Kinh nghiệm chuyên môn, hoạt động giảng dạy và nghiên cứu học thuật.'))}</p></div>
     <section class="profile-overview">
       <aside class="profile-card"><img src="${esc(asset(p.visuals?.teacherPortrait || p.brand?.mark || 'assets/images/thanh-mark.svg'))}" alt="${esc(C('labels','teacherMarkAlt','Biểu tượng thương hiệu THANH'))}" class="profile-mark"><div class="profile-card-copy"><span class="eyebrow">${esc(C('labels','profileBrandEyebrow','THANH · LEARNING PORTAL'))}</span><h2>${esc(t.name || 'Đoàn Tuấn Thanh')}</h2><p class="profile-role">${esc(t.role || 'Giảng viên thỉnh giảng')}</p><p class="profile-positioning">${esc(t.positioning || '')}</p></div></aside>
-      <div class="content-card bio-card"><h2>${esc(C('about','bioTitle','Giới thiệu'))}</h2>${paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}</div>
+      <div class="content-card bio-card"><h2>${esc(C('about','bioTitle','Giới thiệu'))}</h2>${paragraphs.map(p=>`<p data-inline-text>${readableText(p)}</p>`).join('')}</div>
     </section>
-    ${t.perspective?`<section class="content-card lecturer-perspective"><div class="perspective-heading"><span class="perspective-mark">${icon('quote')}</span><div><span class="eyebrow">GÓC NHÌN CÁ NHÂN</span><h2>${esc(C('about','perspectiveTitle','Góc nhìn của giảng viên'))}</h2></div></div>${String(t.perspective).split(/\n\s*\n/).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('')}</section>`:''}
+    ${t.perspective?`<section class="content-card lecturer-perspective"><div class="perspective-heading"><span class="perspective-mark">${icon('quote')}</span><div><span class="eyebrow">GÓC NHÌN CÁ NHÂN</span><h2>${esc(C('about','perspectiveTitle','Góc nhìn của giảng viên'))}</h2></div></div>${String(t.perspective).split(/\n\s*\n/).filter(Boolean).map(x=>`<p data-inline-text>${readableText(x)}</p>`).join('')}</section>`:''}
     <section class="about-section"><div class="section-heading simple"><div><span class="eyebrow">${esc(C('labels','experienceEyebrow','KINH NGHIỆM'))}</span><h2>${esc(C('about','experienceTitle','Kinh nghiệm chuyên môn'))}</h2></div></div><div class="experience-grid">${experience.map(x=>`<article class="experience-card"><strong>${esc(x.years)}</strong><h3>${esc(x.area)}</h3><p>${esc(x.detail)}</p></article>`).join('')}</div></section>
     <section class="about-two-col">
       <article class="content-card"><div class="card-icon">${icon('user')}</div><h2>${esc(C('about','teachingTitle','Hoạt động giảng dạy'))}</h2><p>${esc(t.teaching || '')}</p></article>
-      <article class="content-card"><div class="card-icon">${icon('book')}</div><h2>${esc(C('about','researchTitle','Nền tảng học thuật'))}</h2>${String(t.research || '').split(/\n\s*\n|\n/).filter(Boolean).map(x=>`<p>${esc(x)}</p>`).join('')}</article>
+      <article class="content-card"><div class="card-icon">${icon('book')}</div><h2>${esc(C('about','researchTitle','Nền tảng học thuật'))}</h2>${String(t.research || '').split(/\n\s*\n|\n/).filter(Boolean).map(x=>`<p data-inline-text>${readableText(x)}</p>`).join('')}</article>
     </section>
     ${t.publicationAccess?`<section class="publication-access"><div class="publication-copy"><span class="eyebrow">NGHIÊN CỨU HỌC THUẬT</span><h2>${esc(t.publicationAccess.title || C('about','researchAccessTitle','Công trình khoa học và bài báo công bố'))}</h2><p>${esc(t.publicationAccess.description || C('about','researchAccessDescription','Vui lòng liên hệ giảng viên để được hỗ trợ truy cập.'))}</p>${(t.publicationAccess.items||[]).map(x=>`<a class="publication-item" href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title||'Công trình khoa học')} ${icon('external-link')}</a>`).join('')}<a class="btn publication-cta" href="${routeHref('lien-he.html')}">${esc(t.publicationAccess.actionLabel || C('about','researchUnlockAction','Liên hệ giảng viên để mở khóa'))} ${icon('arrow')}</a></div><div class="publication-lock"><div class="lock-orbit">${icon('lock')}</div><strong>${esc(t.publicationAccess.lockedLabel || C('about','researchLockedLabel','Nội dung giới hạn quyền truy cập'))}</strong><span>CÔNG TRÌNH · BÀI BÁO KHOA HỌC</span></div></section>`:''}
     <section class="about-section institute-section"><div class="section-heading simple"><div><span class="eyebrow">${esc(C('labels','instituteEyebrow','ĐƠN VỊ KẾT NỐI'))}</span><h2>${esc(C('about','instituteTitle','Đơn vị kết nối giảng viên'))}</h2></div></div>
@@ -208,7 +253,7 @@ function courseBreadcrumb(c, sectionLabel) {
   return `<div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span><a href="${routeHref('chuong-trinh.html')}">${esc(C('navigation','courses','Chương trình học'))}</a><span>/</span><a href="${courseUrl(c)}">${esc(c.shortTitle || c.title)}</a>${sectionLabel && sectionLabel!=='Tổng quan môn học'?`<span>/</span>${esc(sectionLabel)}`:''}</div>`;
 }
 function courseSidebar(c, active) {
-  return `<aside class="course-sidebar"><div class="sidebar-course-name"><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><strong>${esc(c.shortTitle || c.title)}</strong></div><nav aria-label="${esc(C('labels','courseSidebarAria','Nội dung môn học'))}">${COURSE_SECTIONS.map(s=>`<a class="${active===s.id?'active':''}" href="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}">${icon(s.icon)}<span>${esc(C('course',s.id,s.label))}</span></a>`).join('')}</nav><a class="sidebar-back" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></aside>`;
+  return `<aside class="course-sidebar"><div class="sidebar-course-name"><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><strong>${esc(c.shortTitle || c.title)}</strong></div><label class="course-section-picker" for="courseSectionSelect">Chọn mục trong môn học<select id="courseSectionSelect" class="course-section-select">${COURSE_SECTIONS.map(s=>`<option value="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}" ${active===s.id?'selected':''}>${esc(C('course',s.id,s.label))}</option>`).join('')}</select></label><nav aria-label="${esc(C('labels','courseSidebarAria','Nội dung môn học'))}">${COURSE_SECTIONS.map(s=>`<a class="${active===s.id?'active':''}" href="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}">${icon(s.icon)}<span>${esc(C('course',s.id,s.label))}</span></a>`).join('')}</nav><a class="sidebar-back" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></aside>`;
 }
 function courseOverviewHTML(c) {
   const s = c.syllabus || {};
@@ -229,17 +274,21 @@ function syllabusHTML(c) {
     <section class="content-card"><h2>${esc(C('labels','syllabusOverviewTitle','Giới thiệu môn học'))}</h2><p>${esc(s.overview || '')}</p></section>
     <div class="two-col"><section class="content-card"><h2>${esc(C('labels','objectivesTitle','Mục tiêu học tập'))}</h2>${bullets(s.objectives)}</section><section class="content-card"><h2>${esc(C('labels','outcomesTitle','Kết quả cần đạt'))}</h2>${bullets(s.outcomes)}</section></div>
     <section class="content-card"><h2>${esc(C('labels','sessionPlanTitle','Kế hoạch nội dung'))}</h2><div class="session-list">${(s.sessions || []).map(x=>`<article class="session"><div class="session-num">${String(x.number).padStart(2,'0')}</div><div class="session-main"><h3>${esc(x.title)}</h3><p>${esc(x.focus)}</p></div><div class="session-output"><small>${esc(C('labels','outputLabel','SẢN PHẨM / ĐẦU RA'))}</small><span>${esc(x.output)}</span></div></article>`).join('')}</div></section>
-    ${tracks.length?`<section class="content-card"><h2>${esc(C('labels','tracksTitle','Thực hành theo chuyên ngành'))}</h2><p>${esc(C('course','trackIntro','Cùng một nền tảng học tập, nhiệm vụ và sản phẩm được lựa chọn theo đặc thù từng chuyên ngành.'))}</p><div class="track-grid">${tracks.map(t=>`<article class="track-card">${t.image?`<img src="${esc(asset(t.image))}" alt="${esc(t.title)}" loading="lazy">`:''}<div class="track-copy"><small>${esc(t.short)}</small><h3>${esc(t.title)}</h3><p>${esc(t.subtitle)}</p><details><summary>${esc(C('course','trackDetails',C('labels','trackDetailsLabel','Xem nhiệm vụ và sản phẩm')))}</summary><p><b>${esc(C('labels','taskLabel','Nhiệm vụ'))}:</b> ${esc(t.task)}</p><p><b>${esc(C('labels','workflowLabel','Các bước'))}:</b> ${esc(t.workflow)}</p><p><b>${esc(C('labels','productLabel','Sản phẩm'))}:</b> ${esc(t.product)}</p><p><b>${esc(C('labels','toolsLabel','Công cụ'))}:</b> ${esc(t.tools)}</p></details></div></article>`).join('')}</div></section>`:''}
+    ${tracks.length?`<section class="content-card"><h2>${esc(c.tracksTitle || C('labels','tracksTitle','Thực hành theo chuyên ngành'))}</h2><p>${esc(c.tracksIntro || C('course','trackIntro','Cùng một nền tảng học tập, nhiệm vụ và sản phẩm được lựa chọn theo đặc thù từng chuyên ngành.'))}</p><div class="track-grid">${tracks.map(t=>`<article class="track-card">${t.image?`<img src="${esc(asset(t.image))}" alt="${esc(t.title)}" loading="lazy" decoding="async" width="900" height="600">`:''}<div class="track-copy"><small>${esc(t.short)}</small><h3>${esc(t.title)}</h3><p>${esc(t.subtitle)}</p><details><summary>${esc(C('course','trackDetails',C('labels','trackDetailsLabel','Xem nhiệm vụ và sản phẩm')))}</summary><p><b>${esc(C('labels','taskLabel','Nhiệm vụ'))}:</b> ${esc(t.task)}</p><p><b>${esc(C('labels','workflowLabel','Các bước'))}:</b> ${esc(t.workflow)}</p><p><b>${esc(C('labels','productLabel','Sản phẩm'))}:</b> ${esc(t.product)}</p><p><b>${esc(C('labels','toolsLabel','Công cụ'))}:</b> ${esc(t.tools)}</p></details></div></article>`).join('')}</div></section>`:''}
     <div class="two-col"><section class="content-card"><h2>${esc(C('labels','teachingApproachTitle','Phương pháp học tập'))}</h2>${bullets(s.teachingApproach)}</section><section class="content-card"><h2>${esc(C('labels','assessmentTitle','Đánh giá kết quả'))}</h2><div class="assessment-list">${(s.assessment || []).map(x=>`<div class="assessment-row"><strong>${esc(x.weight)}</strong><div><b>${esc(x.name)}</b><p>${esc(x.description)}</p></div></div>`).join('')}</div></section></div>
     ${(s.projectRubric || []).length?`<section class="content-card"><h2>${esc(C('labels','projectRubricTitle','Tiêu chí đánh giá Mini Project'))}</h2>${s.projectRubric.map(x=>`<div class="rubric-row"><span>${esc(x.name)}</span><strong>${esc(x.weight)}</strong></div>`).join('')}</section>`:''}`;
 }
 function slidesHTML(c) {
+  if (c.lectureAccess?.mode === 'enrolled_only') {
+    const access = c.lectureAccess;
+    return `<div class="section-page-intro"><span class="eyebrow">HỌC LIỆU THEO LỚP</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1></div><section class="content-card lecture-access-notice"><div class="locked-icon">${icon('lock')}</div><h2>${esc(access.title)}</h2><p>${esc(access.message)}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(access.action)} ${icon('arrow')}</a></section>`;
+  }
   const slides = c.slides || [];
   if (!slides.length) return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','learningMaterialsEyebrow','LEARNING MATERIALS'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1><p>${esc(C('course','slidesIntro','Slide và tài liệu giảng dạy được cập nhật theo từng buổi học.'))}</p></div><div class="empty-state"><div class="empty-state-icon">${icon('slides')}</div><h2>${esc(C('course','emptySlidesTitle','Bài giảng sẽ được cập nhật'))}</h2><p>${esc(C('course','emptySlidesText','Slide của môn học sẽ được đăng tải tại đây sau khi giảng viên hoàn thiện và sắp xếp theo từng buổi.'))}</p></div>`;
   return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','learningMaterialsEyebrow','LEARNING MATERIALS'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1><p>${esc(C('course','slidesIntro','Slide và tài liệu giảng dạy được cập nhật theo từng buổi học.'))}</p></div><div class="resource-grid">${slides.map(x=>`<article class="resource-card"><div class="resource-meta"><span>${esc(x.type || C('course','defaultSlideType','Bài giảng'))}</span><small>${esc(x.session || '')}</small></div><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p><a href="${esc(asset(x.url))}" target="_blank" rel="noopener">${esc(x.access || C('course','downloadResource','Xem / tải tài liệu'))} ${icon('arrow')}</a></article>`).join('')}</div>`;
 }
 function resourceCard(x) {
-  return `<article class="resource-card" data-lang="${esc(x.language || '')}" data-type="${esc(x.type || '')}"><div class="resource-meta"><span>${esc(x.language || '')}</span><small>${esc(x.type || '')}</small></div><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p><small class="publisher">${esc(x.publisher || '')}</small><a href="${esc(x.url || '#')}" target="_blank" rel="noopener">${esc(x.access || C('course','defaultResourceAction',C('course','openResource','Mở tài liệu')))} ${icon('arrow')}</a></article>`;
+  return `<article class="resource-card" data-lang="${esc(x.language || '')}" data-type="${esc(x.type || '')}"><div class="resource-meta"><span>${esc(x.language || '')}</span><small>${esc(x.type || '')}</small></div><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p><small class="publisher">${esc(x.publisher || '')}</small><a href="${esc(asset(x.url || '#'))}" target="_blank" rel="noopener">${esc(x.access || C('course','defaultResourceAction',C('course','openResource','Mở tài liệu')))} ${icon('arrow')}</a></article>`;
 }
 function referencesHTML(c) {
   const items = c.references || [];
@@ -254,7 +303,7 @@ function supportHTML(c) {
   if (!items.length) return intro + `<div class="empty-state"><div class="empty-state-icon">${icon('support')}</div><h2>${esc(C('course','emptySupportTitle','Nội dung hỗ trợ đang được cập nhật'))}</h2></div>`;
   return intro + `<div class="support-grid">${items.map(x=>{
     const link = x.url || (x.id === 'consult' ? contact.zaloUrl : '');
-    const action = link ? `<a class="support-action" href="${esc(link)}" target="_blank" rel="noopener">${esc(x.id==='consult'?C('course','consult','Kết nối Zalo với giảng viên'):(x.action || C('course','defaultSupportAction','Mở nội dung')))} ${icon('arrow')}</a>` : `<span class="support-status">${esc(x.label || C('course','defaultSupportStatus','Đang cập nhật'))}</span>`;
+    const action = link ? `<a class="support-action" href="${esc(asset(link))}" ${link.startsWith('assets/resources/')?`download="${esc(link.split('/').pop())}"`: ''} target="_blank" rel="noopener">${esc(x.id==='consult'?C('course','consult','Kết nối Zalo với giảng viên'):(x.action || C('course','defaultSupportAction','Mở nội dung')))} ${icon('arrow')}</a>` : `<span class="support-status">${esc(x.label || C('course','defaultSupportStatus','Đang cập nhật'))}</span>`;
     return `<article class="support-card"><div class="support-icon">${icon(x.id==='consult'?'contact':x.id==='prompts'?'image':x.id==='tutorials'?'book':'support')}</div><div class="support-copy"><span class="support-category">${esc(x.category || '')}</span><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p>${action}</div></article>`;
   }).join('')}</div>`;
 }
@@ -287,14 +336,16 @@ function renderCourse() {
   else if (section === 'slides') content = slidesHTML(c);
   else if (section === 'references') content = referencesHTML(c);
   else if (section === 'support') content = supportHTML(c);
-  target.innerHTML = `<div class="container page-pad course-page">${courseBreadcrumb(c, sectionItem.label)}<div class="course-page-layout">${courseSidebar(c,section)}<main class="course-page-main">${content}<div class="course-page-bottom"><a href="${courseUrl(c)}">← ${esc(c.shortTitle || c.title)}</a><a href="${routeHref('lien-he.html')}">${esc(C('labels','courseHelpLink','Cần hỗ trợ? Kết nối giảng viên'))} ${icon('arrow')}</a></div></main></div></div>`;
+  target.innerHTML = `<div class="container page-pad course-page">${courseBreadcrumb(c, sectionItem.label)}<div class="course-page-layout">${courseSidebar(c,section)}<article class="course-page-main"><div class="course-tools"><p>${esc(C('course','printHint','Lưu nội dung mục đang xem để đọc hoặc sử dụng khi học.'))}</p><button type="button" class="print-button">${esc(C('course','printAction','In / Lưu PDF'))}</button></div><div class="print-only"><strong>${esc(c.title)}</strong><p>${esc(sectionItem.label)} · ${esc(DB.portal.teacher?.name || DB.portal.owner || '')}</p></div>${content}<div class="course-page-bottom"><a href="${courseUrl(c)}">← ${esc(c.shortTitle || c.title)}</a><a href="${routeHref('lien-he.html')}">${esc(C('labels','courseHelpLink','Cần hỗ trợ? Kết nối giảng viên'))} ${icon('arrow')}</a></div></article></div></div>`;
+  $('.course-section-select',target)?.addEventListener('change',e => {window.location.href=e.target.value;});
+  $('.print-button',target)?.addEventListener('click', () => window.print());
   setupResourceFilters();
 }
 function renderContact() {
   const p = DB.portal || {}, c = p.contact || {}, qr = c.zaloQr || 'assets/images/zalo-qr.png';
   $('#contactContent').innerHTML = `<div class="container page-pad">
     <div class="page-intro"><div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span>${esc(C('navigation','contact','Liên hệ'))}</div><div class="eyebrow">${esc(C('contact','eyebrow','CONTACT'))}</div><h1>${esc(C('contact','title','Kết nối với giảng viên'))}</h1><p>${esc(C('contact','description','Trao đổi về chương trình học, nội dung bài giảng và hoạt động đào tạo.'))}</p></div>
-    <div class="contact-layout"><section class="contact-card"><h2>${esc(C('contact','infoTitle','Thông tin liên hệ'))}</h2><div class="contact-detail">${icon('user')}<div><small>${esc(C('labels','lecturerLabel','Giảng viên'))}</small><strong>${esc(p.teacher?.name || p.owner || 'Đoàn Tuấn Thanh')}</strong></div></div>${c.phone?`<div class="contact-detail">${icon('contact')}<div><small>${esc(C('contact','phoneLabel','Điện thoại / Zalo'))}</small><strong><a href="tel:${esc(c.phone)}">${esc(phoneDisplay(c.phone))}</a></strong></div></div>`:''}${c.zaloUrl?`<a class="btn contact-zalo" href="${esc(c.zaloUrl)}" target="_blank" rel="noopener">${esc(C('contact','openZalo','Mở Zalo'))} ${icon('arrow')}</a>`:''}</section>
+    <div class="contact-layout"><section class="contact-card"><h2>${esc(C('contact','infoTitle','Thông tin liên hệ'))}</h2><div class="contact-detail">${icon('user')}<div><small>${esc(C('labels','lecturerLabel','Giảng viên'))}</small><strong>${esc(p.teacher?.name || p.owner || 'Đoàn Tuấn Thanh')}</strong></div></div>${c.email?`<div class="contact-detail">${icon('contact')}<div><small>${esc(C('contact','emailLabel','Email'))}</small><strong class="contact-email-address"><a href="mailto:${esc(c.email)}">${esc(c.email)}</a></strong><a class="btn email-action" href="mailto:${esc(c.email)}">${esc(C('contact','emailAction','Gửi email'))} ${icon('arrow')}</a></div></div>`:''}${c.phone?`<div class="contact-detail">${icon('contact')}<div><small>${esc(C('contact','phoneLabel','Điện thoại / Zalo'))}</small><strong><a href="tel:${esc(c.phone)}">${esc(phoneDisplay(c.phone))}</a></strong></div></div>`:''}${c.zaloUrl?`<a class="btn contact-zalo" href="${esc(c.zaloUrl)}" target="_blank" rel="noopener">${esc(C('contact','openZalo','Mở Zalo'))} ${icon('arrow')}</a>`:''}</section>
       <section class="qr-card"><img src="${esc(asset(qr))}" alt="${esc(C('labels','zaloQrAlt','Mã QR Zalo cá nhân của giảng viên'))}"><h2>${esc(C('contact','qrTitle','Quét mã QR để kết nối'))}</h2><p>${esc(C('contact','qrDescription','Sử dụng ứng dụng Zalo để quét mã và gửi lời nhắn trực tiếp.'))}</p></section></div>
   </div>`;
 }
@@ -308,9 +359,10 @@ function renderSitemap() {
   </div></div>`;
 }
 function renderShell() {
+  if(disposeHeroMotion){disposeHeroMotion();disposeHeroMotion=null;}
   renderHeader(); renderFooter();
   const page = document.body.dataset.page;
-  if (page === 'home') renderHome();
+  if (page === 'home') {renderHome();setupHeroMotion();}
   else if (page === 'about') renderAbout();
   else if (page === 'courses') renderCourses();
   else if (page === 'contact') renderContact();
