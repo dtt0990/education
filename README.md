@@ -1,68 +1,73 @@
-# Cổng thông tin học tập · THANH
+# Cổng thông tin học tập · THANH (V3)
 
-Website học tập cá nhân do giảng viên Đoàn Tuấn Thanh sở hữu và quản lý. Website được tổ chức theo cấu trúc nhiều trang, có sitemap và trang nội dung riêng cho từng môn học.
+Website học tập cá nhân của giảng viên Đoàn Tuấn Thanh. Đây là bộ mã nguồn **sẵn sàng triển khai trên GitHub Pages**; không cần build, backend hoặc API trả phí.
 
-## 1. Cấu trúc website
+## Cấu trúc
 
 - `index.html`: Trang chủ.
-- `gioi-thieu.html`: Giới thiệu giảng viên, kinh nghiệm, hoạt động giảng dạy, nghiên cứu và đơn vị liên quan.
-- `chuong-trinh.html`: Danh mục 5 môn học.
-- `lien-he.html`: Điện thoại, Zalo và QR cá nhân.
-- `so-do-website.html`: Sơ đồ điều hướng hiển thị cho người dùng.
-- `mon-hoc/`: Trang riêng cho từng môn học.
-  - `ai-tech/`: Tổng quan, đề cương, bài giảng, tài liệu tham khảo và hỗ trợ học viên là các trang riêng.
-  - Bốn môn còn lại có trang riêng và thông báo tạm khóa cho đến khi nội dung được mở.
-- `data/courses.json`: Dữ liệu nội dung, văn bản giao diện, hồ sơ, hình ảnh và môn học.
-- `assets/css/portal.css`: Hệ thống giao diện, typography và responsive.
-- `assets/js/portal.js`: Điều hướng và hiển thị nội dung.
-- `assets/images/`: Logo, ảnh môn học, ảnh minh họa và QR Zalo.
-- `fonts/`: Font Roboto tự lưu trữ, có hỗ trợ ký tự tiếng Việt.
-- `admin.html`: Trình biên tập nội dung cục bộ; không đưa lên website công khai.
+- `gioi-thieu.html`: Giới thiệu giảng viên.
+- `chuong-trinh.html`: Danh mục chương trình học.
+- `lien-he.html`: Thông tin liên hệ.
+- `so-do-website.html`: Sơ đồ website.
+- `mon-hoc/`: Trang tổng quan và các trang con của từng môn học.
+- `data/courses.json`: Dữ liệu nội dung website.
+- `assets/css/portal.css`: Giao diện, bố cục, responsive và hiệu ứng.
+- `assets/js/portal.js`: Logic hiển thị và điều hướng.
+- `assets/images/`: Logo, ảnh minh họa, ảnh môn học và QR.
+- `fonts/`: Font Roboto tự lưu trữ.
+- `THANH_V3_PREVIEW_EDITABLE.html`: Bản xem độc lập, có thể chỉnh sửa trực tiếp trên giao diện.
+- `404.html`, `robots.txt`, `sitemap.xml`, `.nojekyll`: Các tệp hỗ trợ triển khai và lập chỉ mục.
 
-## 2. Sơ đồ môn học
+## Đưa website lên GitHub Pages
 
-Mỗi môn học có thể có các khu vực riêng:
+1. Giải nén ZIP này.
+2. Mở repository GitHub sẽ dùng để xuất bản website.
+3. Upload **toàn bộ nội dung bên trong ZIP** vào thư mục gốc của repository. Không upload một thư mục bọc bên ngoài.
+4. Commit các tệp lên nhánh `main`.
+5. Vào **Settings → Pages**.
+6. Trong **Build and deployment**, chọn **Deploy from a branch**.
+7. Chọn branch `main`, folder `/(root)`, rồi nhấn **Save**.
+8. Đợi GitHub Pages triển khai xong. Nếu repository là `education2026` dưới tài khoản `dtt0990`, địa chỉ website dự kiến là `https://dtt0990.github.io/education2026/`.
 
-1. Tổng quan môn học.
-2. Đề cương môn học.
-3. Nội dung bài giảng.
-4. Tài liệu tham khảo.
-5. Hỗ trợ học viên.
+Trang website chính nằm ở `/`. Bản xem chỉnh sửa trực tiếp có thể mở riêng tại `/THANH_V3_PREVIEW_EDITABLE.html`; trang này không nằm trong menu chính.
 
-Hiện Môn 01 đang mở. Các môn còn lại hiển thị thông báo: “Nội dung hiện đang tạm khóa, liên hệ quản trị viên để mở.”
+## Chỉnh sửa nội dung
 
-## 3. Quản trị và chỉnh sửa nội dung
+Có hai cách:
 
-Website là website tĩnh, phù hợp triển khai công khai trên GitHub Pages. Không cần API trả phí hoặc máy chủ backend.
+### A. Chỉnh sửa trực tiếp trên bản Preview
 
-1. Mở `admin.html` trên máy tính bằng Chrome hoặc Edge.
-2. Chọn **Nhập JSON** và tải file `data/courses.json` hiện hành.
-3. Chỉnh sửa thông tin cổng, hồ sơ giảng viên, nội dung giao diện hoặc từng môn học.
-4. Có thể sửa toàn bộ dữ liệu trong tab **Toàn bộ dữ liệu JSON**.
-5. Chọn **Xuất JSON cập nhật**.
-6. Thay file `data/courses.json` trên GitHub bằng file vừa xuất.
+1. Mở `THANH_V3_PREVIEW_EDITABLE.html` bằng Chrome hoặc Edge (hoặc mở URL tương ứng sau khi GitHub Pages triển khai).
+2. Chọn **Chỉnh sửa trực tiếp** rồi bấm vào phần chữ hoặc hình ảnh cần thay đổi.
+3. Chọn **Lưu bản nháp** để lưu trên trình duyệt hiện tại, hoặc **Xuất JSON** để tải dữ liệu đã sửa.
+4. Muốn cập nhật website chính, thay `data/courses.json` bằng JSON vừa xuất rồi commit/push lên GitHub.
 
-Tất cả nội dung chữ và đường dẫn hình ảnh hiển thị được quản lý trong JSON. Có thể thay hình bằng cách nhập đường dẫn tương đối, ví dụ `assets/images/logo-truong.webp`, hoặc dùng trường tải ảnh trong trình biên tập để nhúng ảnh vào JSON. Nếu muốn repository gọn nhẹ, nên tải ảnh lên `assets/images/` rồi dùng đường dẫn tương đối.
+Bản Preview không tự ghi thay đổi lên repository hoặc website công khai. Nó chỉ lưu bản nháp trong trình duyệt và xuất JSON khi người dùng chủ động yêu cầu.
 
-Bố cục, màu sắc, font, khoảng cách và hiệu ứng được quản lý trong `assets/css/portal.css`; cấu trúc trang và logic điều hướng được quản lý trong `assets/js/portal.js` và các file HTML. Những thay đổi về thiết kế tổng thể cần chỉnh ở các file nguồn này.
+### B. Chỉnh sửa mã nguồn
 
-## 4. Font chữ
+- Nội dung văn bản, thông tin môn học, đường dẫn tài liệu và hình ảnh được quản lý trong `data/courses.json`.
+- Giao diện và hiệu ứng được quản lý trong `assets/css/portal.css`.
+- Cấu trúc trang và chức năng được quản lý trong `assets/js/portal.js` và các tệp HTML.
+- Khi cập nhật, thay đúng tệp trong repository rồi commit/push lại.
 
-Website sử dụng Roboto local với các mức 400, 500, 700 và 900. Các file font nằm trong `fonts/`; CSS gọi font từ đường dẫn tương đối để hoạt động trên GitHub Pages kể cả khi website được triển khai trong một repository con. Không cần tải Google Fonts từ mạng ngoài.
+Bộ biên tập quản trị cục bộ `admin.html` được giữ trong gói FULL KIT riêng, không đưa vào website công khai.
 
-## 5. Đưa lên GitHub Pages
+## Lưu ý trước khi xuất bản
 
-1. Giải nén gói Public.
-2. Upload toàn bộ nội dung bên trong thư mục website lên thư mục gốc repository `education2026` (không upload thư mục bọc bên ngoài).
-3. Commit vào nhánh `main`.
-4. Vào **Settings → Pages**, chọn nhánh `main` và thư mục `/ (root)`.
-5. Sau khi triển khai, kiểm tra các trang: Trang chủ, Giới thiệu, Chương trình học, Môn 01 và từng trang con.
+- GitHub Pages là website công khai. Mọi nội dung trong `data/courses.json`, hình ảnh và tài liệu được commit lên repository đều có thể được người khác truy cập.
+- Trạng thái “Tạm khóa” chỉ ẩn nội dung ở giao diện; không phải cơ chế bảo mật. Không commit tài liệu nội bộ, dữ liệu cá nhân học viên hoặc nội dung chưa được phép công khai.
+- Bản Preview Editable chỉ chỉnh sửa bản xem trong trình duyệt, không có quyền ghi lên GitHub và không thay đổi website chính.
+- Gói này đã giữ cấu trúc đường dẫn tương đối và `.nojekyll` để tương thích với GitHub Pages khi chạy ở repository con.
+- `sitemap.xml` và `robots.txt` đang cấu hình theo `https://dtt0990.github.io/education2026/`. Nếu đổi tài khoản, tên repository hoặc domain, cần cập nhật hai tệp này.
 
-Website đang được cấu hình theo URL hiện tại: `https://dtt0990.github.io/education2026/`. Nếu đổi tên repository hoặc domain, cần cập nhật `sitemap.xml` và `robots.txt`.
+## Giấy phép font
 
-## 6. Lưu ý bảo mật và quyền truy cập
+Font Roboto được lưu cục bộ trong `fonts/`; giấy phép Apache 2.0 đi kèm tại `fonts/Roboto-LICENSE-Apache-2.0.txt`.
 
-- Website công khai; tài liệu được liên kết công khai có thể được xem hoặc tải.
-- Trạng thái “Tạm khóa” chỉ ẩn nội dung ở giao diện, không bảo vệ file nếu file gốc được đưa công khai lên repository.
-- `admin.html` là công cụ biên tập chạy cục bộ, không phải hệ thống đăng nhập quản trị. Không đưa file này lên repository public.
-- Chỉ đưa lên website những tài liệu mà giảng viên có quyền chia sẻ công khai; không đưa dữ liệu cá nhân của học viên hoặc tài liệu nội bộ lên repository public.
+
+## Dữ liệu đã cập nhật
+
+- Nội dung `data/courses.json` đã đồng bộ với tệp JSON chỉnh sửa mới nhất do giảng viên cung cấp ngày 16/11/2026.
+- Bản xem `THANH_V3_PREVIEW_EDITABLE.html` cũng đã được tạo lại từ chính dữ liệu này.
+- Khóa lưu nháp của bản xem đã nâng lên V4 để không nạp lại bản nháp V3 cũ từ trình duyệt.
