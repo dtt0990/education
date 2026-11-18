@@ -1,7 +1,7 @@
 {
   "schema": "LEARNING_PORTAL",
   "version": "2.0.0",
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-18",
   "portal": {
     "name": "Cổng thông tin học tập",
     "subtitle": "Không gian học tập và tài nguyên\ndành cho học viên",
@@ -1397,6 +1397,384 @@
         "mode": "enrolled_only",
         "title": "Dành cho học viên tham gia học",
         "message": "Chỉ học viên tham gia học mới được xem nội dung bài giảng. Sau khi bài giảng được hoàn thiện và cập nhật, giảng viên sẽ thông báo cách truy cập cho từng lớp.",
+        "action": "Trao đổi với giảng viên"
+      }
+    },
+    {
+      "id": "effective-learning-entrepreneurship",
+      "number": "06",
+      "title": "Kỹ năng học tập hiệu quả và tư duy khởi nghiệp đổi mới sáng tạo",
+      "shortTitle": "Học tập và tư duy khởi nghiệp",
+      "subtitle": "Tìm cách học phù hợp với mình và thử giải quyết một vấn đề trong ngành đang học.",
+      "description": "Bạn sẽ tập tự học, sắp xếp thời gian và giữ tập trung. Sau đó, bạn cùng nhóm tìm hiểu một vấn đề thực tế, làm mẫu thử và sửa ý tưởng dựa trên phản hồi.",
+      "status": "open",
+      "category": "Học tập và phát triển nghề nghiệp",
+      "duration": "8 tiết (360 phút)",
+      "format": "2 buổi học trực tiếp",
+      "method": "Kết hợp trao đổi và thực hành",
+      "coverImage": "assets/images/course06-cover.webp",
+      "accent": "blue",
+      "audienceLabel": "Dành cho học sinh trung cấp và sinh viên cao đẳng",
+      "tracksTitle": "Vận dụng theo ngành học",
+      "tracksIntro": "Chọn một vấn đề gần với ngành mình học và có thể thử giải quyết bằng những gì nhóm đang có.",
+      "syllabus": {
+        "overview": "Ở buổi đầu của môn học, bạn thử những cách tự học và ôn tập, rồi chọn cách phù hợp với lịch của mình. Sang buổi thứ hai, bạn cùng nhóm tìm hiểu một vấn đề gần với ngành học, làm mẫu thử và điều chỉnh sau khi nghe phản hồi.\n\nMôn học gồm 8 tiết, mỗi tiết 45 phút, chia thành 2 buổi. Mỗi buổi có 180 phút học, chưa tính giờ nghỉ. Lớp có từ 20 đến 30 học viên, chia thành các nhóm từ 4 đến 6 người.\n\nThử nghiệm trên lớp giúp nhóm biết nên sửa gì và cần tìm hiểu thêm điều gì. Để biết giải pháp có đáp ứng nhu cầu thực tế hay không, nhóm cần thử tiếp với những người sẽ sử dụng nó. Sau khóa học, bạn có thể dùng kế hoạch cá nhân để theo dõi và duy trì cách học đã chọn.",
+        "objectives": [
+          "Biết tự đặt mục tiêu, theo dõi và điều chỉnh cách học của mình.",
+          "Biết chọn phương pháp học dựa trên nghiên cứu và kiểm tra lại thông tin khi dùng AI.",
+          "Biết tìm một vấn đề trong công việc, xem mình có những nguồn lực nào và thử một cách giải quyết."
+        ],
+        "outcomes": [
+          "Lập kế hoạch học tập cho các mốc 30, 60 và 90 ngày, nêu rõ sản phẩm cần hoàn thành và cách theo dõi.",
+          "Tự nhớ lại bài, đối chiếu với tài liệu, sửa phần sai và lên lịch ôn.",
+          "Mô tả vấn đề và phân biệt điều quan sát được với điều mình mới giả định.",
+          "Viết đề xuất giá trị, làm mẫu thử và lên cách kiểm tra một giả định.",
+          "Nêu rõ bằng chứng hiện có cho biết điều gì và chọn bước điều chỉnh tiếp theo."
+        ],
+        "diagnostic": {
+          "title": "Theo dõi tiến bộ qua cách học và bài thực hành",
+          "description": "Tự đánh giá 10 hành vi học tập và đối chiếu bài thực hành với tiêu chí. Hoạt động này không tính điểm.",
+          "before": "Đầu khóa, điền phiếu rồi làm bài thực hành về đặt mục tiêu, tự kiểm tra và điều chỉnh cách học.",
+          "after": "Cuối khóa, làm một bài tương đương. Sau 14 ngày, xem lại nhật ký và sản phẩm đã làm.",
+          "note": "Đây là phiếu phục vụ học tập và chưa được kiểm định. Hãy đối chiếu câu trả lời với nhật ký và sản phẩm để xem mình đã thay đổi ra sao."
+        },
+        "sessions": [
+          {
+            "number": 1,
+            "title": "Làm chủ việc học",
+            "focus": "Phân biệt học để nhớ, học để làm và học để tạo ra giá trị. Tự xem lại cách học của mình và chọn một việc muốn cải thiện.",
+            "output": "Phiếu tự đánh giá đầu khóa và một mục tiêu ưu tiên.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 2,
+            "title": "Đặt mục tiêu và giữ tập trung",
+            "focus": "Chọn một sản phẩm muốn hoàn thành, xếp lịch vừa sức và chuẩn bị cách xử lý khi bị xao nhãng hoặc lịch thay đổi.",
+            "output": "Kế hoạch theo các mốc 30, 60 và 90 ngày, kèm lịch học trong tuần.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 3,
+            "title": "Tự kiểm tra và ôn giãn cách",
+            "focus": "Thử nhớ lại bài mà không nhìn tài liệu, sau đó đối chiếu và sửa lỗi. Lên lịch ôn và chọn cách học phù hợp với nhiệm vụ.",
+            "output": "Bài tự kiểm tra đã sửa và lịch ôn đã điều chỉnh.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 4,
+            "title": "Điều chỉnh cách học và dùng AI",
+            "focus": "Lập kế hoạch, thử thực hiện rồi ghi lại điều cần sửa. Có thể nhờ AI gợi ý câu hỏi và đối chiếu câu trả lời với tài liệu, hoặc làm bài theo cách không dùng AI.",
+            "output": "Nhật ký ghi cách đã kiểm tra thông tin và kế hoạch tự làm lại bài.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 5,
+            "title": "Tư duy khởi nghiệp và tạo giá trị",
+            "focus": "Tìm hiểu sự khác nhau giữa mở doanh nghiệp và cải tiến công việc trong một tổ chức. Tìm cơ hội ứng dụng công nghệ, giảm lãng phí hoặc giải quyết một nhu cầu của cộng đồng.",
+            "output": "Ba vấn đề đã nhận diện và một cơ hội nhóm chọn để tìm hiểu.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 6,
+            "title": "Tìm hiểu người sử dụng",
+            "focus": "Hỏi người dùng về một việc họ từng làm. Dựa trên dữ liệu thật hoặc tình huống mô phỏng để phân biệt điều có bằng chứng với điều nhóm đang giả định.",
+            "output": "Phiếu mô tả vấn đề và ghi chép phỏng vấn có ghi rõ nguồn.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 7,
+            "title": "Làm mẫu và thử giải pháp",
+            "focus": "Viết giải pháp giúp ích gì cho người dùng, xác định nguồn lực cần có rồi làm một mẫu đơn giản. Thống nhất tiêu chí trước khi thử một giả định.",
+            "output": "Mẫu thử và phiếu ghi kết quả lần thử đầu tiên.",
+            "duration": "45 phút"
+          },
+          {
+            "number": 8,
+            "title": "Trình bày kết quả và lên kế hoạch tiếp",
+            "focus": "Trình bày điều nhóm quan sát được và những gì đã sửa. Mỗi người xem lại phần việc của mình, làm bài cuối khóa và xác định điều cần kiểm tra tiếp.",
+            "output": "Dự án nhỏ, kế hoạch cá nhân và bài cuối khóa.",
+            "duration": "45 phút"
+          }
+        ],
+        "teachingApproach": [
+          "Mỗi tiết bắt đầu bằng một phần giải thích ngắn và ví dụ. Sau đó bạn làm thử, nhận góp ý và sửa bài ngay tại lớp.",
+          "Bạn chọn tình huống phù hợp với ngành đang học, từ nghề kỹ thuật, dịch vụ đến văn hóa nghệ thuật và hoạt động cộng đồng.",
+          "Nếu gặp được người dùng giữa hai buổi, hãy xin phép trước khi ghi nhận thông tin. Nếu dùng tình huống mô phỏng, hãy ghi rõ nguồn và lên kế hoạch kiểm tra lại với người dùng thực tế.",
+          "Bạn có thể làm bài trên giấy. AI là công cụ hỗ trợ tùy chọn."
+        ],
+        "assessment": [
+          {
+            "name": "Bài thực hành",
+            "weight": "20 điểm",
+            "description": "Có bốn bài, mỗi bài 5 điểm. Bạn đặt mục tiêu, tự nhớ lại và sửa lỗi, phân tích vấn đề, rồi soạn câu hỏi phỏng vấn."
+          },
+          {
+            "name": "Dự án nhỏ",
+            "weight": "50 điểm",
+            "description": "Sản phẩm nhóm được chấm tối đa 40 điểm theo bảng tiêu chí. Phần giải thích và đóng góp của mỗi người được chấm tối đa 10 điểm."
+          },
+          {
+            "name": "Kế hoạch cá nhân và phần nhìn lại",
+            "weight": "20 điểm",
+            "description": "Mỗi phần có 5 điểm, gồm mục tiêu, lịch và phương pháp học, tiêu chí theo dõi và điều chỉnh, cùng phần nhìn lại cách học của mình."
+          },
+          {
+            "name": "Tham gia và đóng góp",
+            "weight": "10 điểm",
+            "description": "Chuẩn bị bài tối đa 3 điểm, hợp tác tối đa 4 điểm và góp ý cụ thể tối đa 3 điểm. Bạn có thể trình bày bằng văn bản."
+          }
+        ],
+        "projectRubric": [
+          {
+            "name": "Vấn đề và người dùng",
+            "weight": "25%"
+          },
+          {
+            "name": "Bằng chứng và giới hạn",
+            "weight": "25%"
+          },
+          {
+            "name": "Mẫu thử và cách kiểm tra",
+            "weight": "25%"
+          },
+          {
+            "name": "Kết luận và điều chỉnh",
+            "weight": "25%"
+          }
+        ]
+      },
+      "slides": [],
+      "references": [
+        {
+          "id": "retrieval-science",
+          "title": "The science of effective learning with spacing and retrieval practice",
+          "language": "Tiếng Anh",
+          "type": "Tổng quan nghiên cứu",
+          "publisher": "Carpenter và cộng sự, Nature Reviews Psychology (2022)",
+          "description": "Bài tổng quan về cách tự nhớ lại và ôn giãn cách giúp việc học hiệu quả hơn. Trang bài báo có thể yêu cầu quyền truy cập.",
+          "url": "https://doi.org/10.1038/s44159-022-00089-1",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "retrieval-guide",
+          "title": "Hướng dẫn thực hành tự nhớ lại",
+          "language": "Tiếng Anh",
+          "type": "Hướng dẫn thực hành (PDF)",
+          "publisher": "RetrievalPractice.org",
+          "description": "Hướng dẫn tự kiểm tra sau khi học, đối chiếu câu trả lời và sửa những chỗ còn sai.",
+          "url": "https://pdf.retrievalpractice.org/RetrievalPracticeGuide.pdf",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "spacing-guide",
+          "title": "Hướng dẫn ôn giãn cách",
+          "language": "Tiếng Anh",
+          "type": "Hướng dẫn thực hành (PDF)",
+          "publisher": "RetrievalPractice.org",
+          "description": "Gợi ý cách chia nội dung thành nhiều lượt ôn thay vì dồn vào một lần.",
+          "url": "https://pdf.retrievalpractice.org/SpacingGuide.pdf",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "entrecomp",
+          "title": "Khung năng lực khởi nghiệp EntreComp",
+          "language": "Tiếng Anh",
+          "type": "Khung năng lực",
+          "publisher": "Joint Research Centre, Ủy ban châu Âu (2016)",
+          "description": "Khung năng lực công bố năm 2016, gồm 15 năng lực thuộc ba lĩnh vực.",
+          "url": "https://joint-research-centre.ec.europa.eu/scientific-activities/key-competences-lifelong-learning/entrecomp-entrepreneurship-competence-framework_en",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "tvet",
+          "title": "Entrepreneurial learning for TVET institutions",
+          "language": "Tiếng Anh",
+          "type": "Hướng dẫn dành cho giảng viên",
+          "publisher": "UNESCO-UNEVOC (2020)",
+          "description": "Hướng dẫn các cơ sở giáo dục nghề nghiệp tổ chức hoạt động học tập về khởi nghiệp.",
+          "url": "https://connect.unevoc.unesco.org/home/interactive_entrepreneurial_learning_guide",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "designkit",
+          "title": "Design Kit và phương pháp thiết kế lấy con người làm trung tâm",
+          "language": "Tiếng Anh",
+          "type": "Bộ công cụ thực hành",
+          "publisher": "IDEO.org",
+          "description": "Các phương pháp phỏng vấn, tạo mẫu và lấy phản hồi để chọn theo mục tiêu của dự án.",
+          "url": "https://www.designkit.org/methods.html",
+          "access": "Mở tài liệu"
+        },
+        {
+          "id": "genai",
+          "title": "Hướng dẫn AI tạo sinh trong giáo dục và nghiên cứu",
+          "language": "Tiếng Anh",
+          "type": "Hướng dẫn",
+          "publisher": "UNESCO (2023)",
+          "description": "Các nguyên tắc sử dụng AI có trách nhiệm trong dạy học và nghiên cứu, với người học và người dạy ở vị trí trung tâm.",
+          "url": "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research",
+          "access": "Mở tài liệu"
+        }
+      ],
+      "support": [
+        {
+          "id": "learn-1",
+          "title": "Phiếu tự đánh giá năng lực học tập",
+          "category": "Đánh giá",
+          "description": "Điền phiếu đầu khóa để chọn một thói quen muốn cải thiện. Sau 14 ngày, điền lại và xem những sản phẩm bạn đã làm. Bài thực hành cuối buổi thứ hai cho biết bạn đã hiểu và làm được gì bước đầu. Phiếu này dùng trong lớp và chưa được kiểm định như một thang đo.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-diagnostic.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-2",
+          "title": "Kế hoạch học tập theo các mốc 30, 60 và 90 ngày",
+          "category": "Công cụ thực hành",
+          "description": "Chọn một kỹ năng có ích cho ngành học và vừa với quỹ thời gian của bạn. Nếu muốn học thiết kế, hãy đặt mục tiêu cụ thể. Ví dụ, sau 30 ngày bạn tự làm được một áp phích sự kiện đúng kích thước, đủ thông tin và dễ đọc trên điện thoại.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-plan-90-days.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-3",
+          "title": "Bộ phương pháp học tập hiệu quả",
+          "category": "Công cụ thực hành",
+          "description": "Học xong một phần ngắn, hãy đóng tài liệu và thử viết ba ý chính, giải một bài hoặc làm lại một thao tác. Mở tài liệu để tìm chỗ sai rồi sửa. Cảm giác quen khi đọc lại có thể khác với khả năng tự làm. Bạn có thể dùng cách này để ôn mà không cần chấm điểm.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-study-methods.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-4",
+          "title": "Sổ tay quản lý thời gian và sự tập trung",
+          "category": "Công cụ thực hành",
+          "description": "Trong hai ngày, ghi lại thời gian học, làm thêm, đi lại, nghỉ ngơi và dùng mạng xã hội. Nhìn lại lịch để chọn một khoảng bạn có thể dành đều đặn cho việc học. Tính cả trách nhiệm gia đình, thiết bị và nơi học khi lên lịch.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-focus.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-5",
+          "title": "Hướng dẫn tự học và sử dụng AI có kiểm chứng",
+          "category": "Công cụ thực hành",
+          "description": "Trước khi hỏi AI, viết ra điều bạn đã hiểu và chỗ đang vướng. Bạn có thể nhờ AI gợi câu hỏi, giải thích lại hoặc góp ý bản nháp, rồi đối chiếu với tài liệu. Sau đó, tắt cuộc trò chuyện và tự làm một bài tương tự để xem mình đã hiểu đến đâu.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-ai-learning.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-6",
+          "title": "Phiếu nhận diện vấn đề và cơ hội",
+          "category": "Công cụ thực hành",
+          "description": "Quan sát một tình huống trong ngành và ghi rõ chuyện gì xảy ra, vào lúc nào, ai bị ảnh hưởng và ảnh hưởng ra sao. Câu “Sinh viên cần ứng dụng” đã nêu một giải pháp. Hãy bắt đầu từ điều có thể kiểm tra, chẳng hạn người mới bỏ lỡ lịch tập vì thông báo nằm ở nhiều nhóm trò chuyện.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-problem.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-7",
+          "title": "Bộ câu hỏi phỏng vấn người sử dụng",
+          "category": "Công cụ thực hành",
+          "description": "Chọn người từng trải qua tình huống bạn muốn tìm hiểu. Nói rõ mục đích, xin phép trước khi bắt đầu và để họ dừng bất cứ lúc nào. Chỉ ghi điều cần thiết, dùng mã thay tên và hỏi riêng trước khi ghi âm hoặc chụp ảnh. Nhóm nên cử một người hỏi và một người ghi chép.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-interview.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-8",
+          "title": "Mẫu đề xuất giá trị và mô hình ý tưởng",
+          "category": "Công cụ thực hành",
+          "description": "Mô tả nhóm người dùng, việc họ cần làm, giải pháp của bạn và kết quả muốn cải thiện so với cách hiện tại. Chẳng hạn, nhóm hậu trường muốn giảm số lần lấy nhầm đạo cụ. Nhóm có thể thử một bảng chỉ vị trí trước khi quyết định làm ứng dụng.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-value-model.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-9",
+          "title": "Hướng dẫn tạo mẫu thử và kiểm chứng giải pháp",
+          "category": "Công cụ thực hành",
+          "description": "Xác định điều muốn biết trước khi chọn mẫu thử, chẳng hạn phác thảo giao diện, kịch bản dịch vụ hoặc mô hình giấy. Dùng mẫu để xem người dùng hiểu và thao tác ra sao. MVP là phiên bản đơn giản nhất có thể đem lại giá trị để nhóm học từ việc sử dụng thực tế. Một áp phích giới thiệu có thể giúp thử thông điệp.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-prototype.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "learn-10",
+          "title": "Dự án nhỏ và tiêu chí đánh giá",
+          "category": "Đánh giá",
+          "description": "Nhóm từ 4 đến 6 người chọn một vấn đề gần với ngành đang học, làm mẫu và kiểm tra một giả định. Nhóm nộp một trang phân tích, nhật ký ghi bằng chứng, mẫu thử và đề xuất điều chỉnh. Mỗi người nộp kế hoạch học tập 90 ngày và viết ngắn về phần việc mình đã làm.",
+          "status": "ready",
+          "label": "Có tài liệu",
+          "icon": "book-open",
+          "url": "assets/resources/learning-project.pdf",
+          "action": "Tải tài liệu PDF"
+        },
+        {
+          "id": "consult",
+          "title": "Kết nối với giảng viên",
+          "category": "Trao đổi chuyên môn",
+          "description": "Bạn có thể hỏi giảng viên về kế hoạch học tập hoặc trao đổi khi gặp vướng mắc trong dự án.",
+          "status": "contact",
+          "label": "Kết nối qua Zalo",
+          "icon": "message-circle",
+          "url": ""
+        }
+      ],
+      "tracks": [
+        {
+          "short": "NGHỀ KỸ THUẬT",
+          "title": "Cải tiến một thao tác nghề",
+          "subtitle": "Tìm cách giảm nhầm dụng cụ hoặc làm rõ hướng dẫn thao tác trong xưởng thực hành.",
+          "task": "Quan sát lúc lấy và trả dụng cụ. Chọn một nguyên nhân có thể kiểm tra.",
+          "workflow": "Hỏi người thường dùng dụng cụ, phác cách bố trí mới rồi thử trong điều kiện an toàn.",
+          "product": "Phiếu mô tả vấn đề, mẫu bố trí dụng cụ và ghi chú về phần cần sửa.",
+          "tools": "Dùng phiếu quan sát, mẫu câu hỏi và phiếu thử nghiệm trong mục Hỗ trợ học viên.",
+          "image": "assets/images/course06-technical.webp"
+        },
+        {
+          "short": "VĂN HÓA NGHỆ THUẬT",
+          "title": "Tổ chức hoạt động sáng tạo",
+          "subtitle": "Chọn một việc cần cải thiện trong buổi tập, khâu chuẩn bị đạo cụ hoặc trải nghiệm của người xem.",
+          "task": "Xác định một vướng mắc và hỏi người trực tiếp gặp vướng mắc đó.",
+          "workflow": "Thử một cách báo lịch, đánh dấu đạo cụ hoặc hướng dẫn người xem. Sửa mẫu sau khi nhận góp ý.",
+          "product": "Phiếu mô tả vấn đề, mẫu thử và ghi chú về điều đã học từ phản hồi.",
+          "tools": "Dùng phiếu quan sát, mẫu câu hỏi và phiếu thử nghiệm trong mục Hỗ trợ học viên.",
+          "image": "assets/images/course06-arts.webp"
+        },
+        {
+          "short": "DỊCH VỤ VÀ CỘNG ĐỒNG",
+          "title": "Cải thiện một dịch vụ gần gũi",
+          "subtitle": "Tìm cách giảm thời gian chờ, giúp người dùng tìm thông tin hoặc giảm lãng phí.",
+          "task": "Quan sát một lượt sử dụng dịch vụ và chọn một giả định để kiểm tra.",
+          "workflow": "Hỏi người dùng, làm mẫu đơn giản như bảng chỉ dẫn, rồi quan sát họ dùng thử.",
+          "product": "Phiếu mô tả vấn đề, mẫu thử và đề xuất cho lần thử tiếp theo.",
+          "tools": "Dùng phiếu quan sát, mẫu câu hỏi và phiếu thử nghiệm trong mục Hỗ trợ học viên.",
+          "image": "assets/images/course06-community.webp"
+        }
+      ],
+      "classSize": "Từ 20 đến 30 học viên",
+      "lectureAccess": {
+        "mode": "enrolled_only",
+        "title": "Bài giảng dành cho học viên của lớp",
+        "message": "Giảng viên sẽ hướng dẫn cách xem bài giảng khi tài liệu sẵn sàng.",
         "action": "Trao đổi với giảng viên"
       }
     }
