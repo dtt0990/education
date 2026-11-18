@@ -440,3 +440,5 @@ body{background:radial-gradient(ellipse at 0 12%,#dcebe7 0,transparent 38%),radi
 }
 @media screen and (max-width:360px){.container{width:calc(100% - 24px)}.home-hero-copy{padding:26px 19px 20px}.home-hero-copy h1{font-size:27px}.brand-copy strong{font-size:12px}.header-inner{gap:8px}.home-social{padding:23px 16px}.social-card{padding:20px}.content-card{padding:20px 17px}.section-link-card{padding:18px}.course-overview-copy{padding:21px}.course-overview-copy h1{font-size:25px}}
 @media print{.course-section-picker{display:none!important}}
+
+@media screen and (min-width:1101px){.home-course-grid.six-course-grid .course-card:first-child{grid-column:auto}}
