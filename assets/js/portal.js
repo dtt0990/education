@@ -13,7 +13,7 @@ function setupHeroMotion() {
     const paused = video.paused;
     if (!button) return;
     button.textContent = paused ? C('home','playMotion','Phát chuyển động') : C('home','pauseMotion','Tạm dừng');
-    button.setAttribute('aria-label', paused ? 'Phát video nền' : 'Tạm dừng video nền');
+    button.setAttribute('aria-label', paused ? C('labels','playBackground','Phát video nền') : C('labels','pauseBackground','Tạm dừng video nền'));
   };
   const sync = () => {
     if (disposed) return;
@@ -41,6 +41,63 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 let DB = null;
+let vietnameseDB = null;
+let englishCopy = null;
+let locale = 'vi';
+let vietnameseTitle = '';
+const localeKey = 'thanh-portal-language';
+
+function mergeTranslation(source, translated) {
+  if (Array.isArray(source) && Array.isArray(translated)) {
+    return source.map((item, index) => {
+      const key = ['id', 'number', 'image'].find(key => item?.[key] != null);
+      const copy = key
+        ? translated.find(entry => entry?.[key] === item[key])
+        : translated[index];
+      return mergeTranslation(item, copy);
+    });
+  }
+  if (!translated || typeof translated !== 'object' || Array.isArray(translated)) {
+    return translated ?? source;
+  }
+  const merged = {...source};
+  for (const [key, value] of Object.entries(translated)) {
+    merged[key] = mergeTranslation(source?.[key], value);
+  }
+  return merged;
+}
+
+async function selectLocale(next) {
+  if (next === 'en' && !englishCopy) {
+    const response = await fetch(new URL('data/courses.en.json', document.baseURI), {cache:'no-cache'});
+    if (!response.ok) throw new Error('English copy unavailable');
+    const translated = await response.json();
+    if (!translated.portal?.copy || !translated.courses) throw new Error('Invalid English copy');
+    englishCopy = translated;
+  }
+  locale = next;
+  DB = next === 'vi' ? vietnameseDB : {
+    ...vietnameseDB,
+    portal: mergeTranslation(vietnameseDB.portal, englishCopy.portal),
+    courses: vietnameseDB.courses.map(course => mergeTranslation(course, englishCopy.courses[course.id]))
+  };
+  document.documentElement.lang = locale;
+}
+
+async function switchLocale(button) {
+  button.disabled = true;
+  const next = locale === 'vi' ? 'en' : 'vi';
+  try {
+    await selectLocale(next);
+  } catch (error) {
+    button.disabled = false;
+    $('.locale-status').textContent = 'Chưa tải được bản tiếng Anh. Vui lòng thử lại.';
+    return;
+  }
+  try { localStorage.setItem(localeKey, locale); } catch {}
+  renderShell();
+  $('.locale-toggle')?.focus({preventScroll:true});
+}
 
 function C(section, key, fallback = '') {
   return DB?.portal?.copy?.[section]?.[key] ?? fallback;
@@ -112,6 +169,7 @@ function renderHeader() {
   if (!header) return;
   header.innerHTML = `<header class="site-header"><div class="container header-inner">
     ${brandMarkup()}
+    ${!window.PREVIEW_MODE ? `<button class="locale-toggle" type="button" lang="${locale === 'vi' ? 'en' : 'vi'}" aria-label="${locale === 'vi' ? 'Switch to English' : 'Chuyển sang tiếng Việt'}">${locale === 'vi' ? 'EN' : 'VI'}</button><span class="locale-status" role="status"></span>` : ''}
     <button class="nav-toggle" type="button" aria-label="${esc(C('labels','menuOpenAria','Mở menu'))}" aria-expanded="false" aria-controls="mainNavigation"><span></span><span></span><span></span></button>
     <nav id="mainNavigation" class="main-nav" aria-label="${esc(C('labels','mainNavAria','Điều hướng chính'))}">${navItems.map(([id,url,label]) => `<a href="${routeHref(url)}" class="${active===id?'active':''}" ${active===id?'aria-current="page"':''}>${esc(label)}</a>`).join('')}</nav>
     <a class="header-cta" href="${routeHref('lien-he.html')}">${esc(C('navigation','connect','Kết nối Zalo'))} ${icon('arrow')}</a>
@@ -121,7 +179,15 @@ function renderHeader() {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', String(open));
   });
-  header.addEventListener('keydown', e => { if(e.key === 'Escape'){nav.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); toggle.focus();} });
+  const localeButton = $('.locale-toggle', header);
+  localeButton?.addEventListener('click', () => switchLocale(localeButton));
+  header.onkeydown = e => {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+      toggle.focus();
+    }
+  };
   $$('.main-nav a', header).forEach(a => a.addEventListener('click', () => {
     nav.classList.remove('open'); toggle?.setAttribute('aria-expanded','false');
   }));
@@ -193,7 +259,7 @@ function renderHome() {
 
     <section class="home-social" aria-labelledby="social-title">
       <div class="social-intro"><span class="eyebrow">${esc(DB.portal.social.eyebrow)}</span><h2 id="social-title">${esc(DB.portal.social.title)}</h2><p>${esc(DB.portal.social.description)}</p></div>
-      <div class="social-grid">${[['linkedin','LinkedIn','in'],['facebook','Facebook','f']].map(([kind,label,mark])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[kind+'Url'])}" target="_blank" rel="noopener noreferrer" aria-label="Kết nối qua ${label} (mở trong thẻ mới)"><div class="social-top"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-arrow" aria-hidden="true">↗</span></div><div class="social-art" aria-hidden="true"><p>${esc(DB.portal.social[kind+'Art'])}</p></div><div class="social-copy"><p class="social-eyebrow">${esc(DB.portal.social[kind+'Eyebrow'])}</p><h3>${label}</h3><strong class="social-count">${esc(DB.portal.social[kind+'Count'])}</strong><p class="social-count-label">${esc(DB.portal.social.followersLabel)}</p><p class="social-detail">${esc(DB.portal.social[kind+'Detail'])}</p><p class="social-description">${esc(DB.portal.social[kind+'Description'])}</p><small class="social-action">${esc(DB.portal.social.action)} <span aria-hidden="true">↗</span></small></div></a>`).join('')}</div>
+      <div class="social-grid">${[['linkedin','LinkedIn','in'],['facebook','Facebook','f']].map(([kind,label,mark])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[kind+'Url'])}" target="_blank" rel="noopener noreferrer" aria-label="${esc(C('labels','socialLink','Kết nối qua {platform} (mở trong thẻ mới)').replace('{platform}',label))}"><div class="social-top"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-arrow" aria-hidden="true">↗</span></div><div class="social-art" aria-hidden="true"><p>${esc(DB.portal.social[kind+'Art'])}</p></div><div class="social-copy"><p class="social-eyebrow">${esc(DB.portal.social[kind+'Eyebrow'])}</p><h3>${label}</h3><strong class="social-count">${esc(DB.portal.social[kind+'Count'])}</strong><p class="social-count-label">${esc(DB.portal.social.followersLabel)}</p><p class="social-detail">${esc(DB.portal.social[kind+'Detail'])}</p><p class="social-description">${esc(DB.portal.social[kind+'Description'])}</p><small class="social-action">${esc(DB.portal.social.action)} <span aria-hidden="true">↗</span></small></div></a>`).join('')}</div>
       <p class="social-updated">${esc(DB.portal.social.updatedLabel)}</p>
     </section>
   </div>`;
@@ -208,13 +274,13 @@ function renderAbout() {
       <aside class="profile-card"><img src="${esc(asset(p.visuals?.teacherPortrait || p.brand?.mark || 'assets/images/thanh-mark.svg'))}" alt="${esc(C('labels','teacherMarkAlt','Biểu tượng thương hiệu THANH'))}" class="profile-mark"><div class="profile-card-copy"><span class="eyebrow">${esc(C('labels','profileBrandEyebrow','THANH · LEARNING PORTAL'))}</span><h2>${esc(t.name || 'Đoàn Tuấn Thanh')}</h2><p class="profile-role">${esc(t.role || 'Giảng viên thỉnh giảng')}</p><p class="profile-positioning">${esc(t.positioning || '')}</p></div></aside>
       <div class="content-card bio-card"><h2>${esc(C('about','bioTitle','Giới thiệu'))}</h2>${paragraphs.map(p=>`<p data-inline-text>${readableText(p)}</p>`).join('')}</div>
     </section>
-    ${t.perspective?`<section class="content-card lecturer-perspective"><div class="perspective-heading"><span class="perspective-mark">${icon('quote')}</span><div><span class="eyebrow">GÓC NHÌN CÁ NHÂN</span><h2>${esc(C('about','perspectiveTitle','Góc nhìn của giảng viên'))}</h2></div></div>${String(t.perspective).split(/\n\s*\n/).filter(Boolean).map(x=>`<p data-inline-text>${readableText(x)}</p>`).join('')}</section>`:''}
+    ${t.perspective?`<section class="content-card lecturer-perspective"><div class="perspective-heading"><span class="perspective-mark">${icon('quote')}</span><div><span class="eyebrow">${esc(C('labels','perspectiveEyebrow','GÓC NHÌN CÁ NHÂN'))}</span><h2>${esc(C('about','perspectiveTitle','Góc nhìn của giảng viên'))}</h2></div></div>${String(t.perspective).split(/\n\s*\n/).filter(Boolean).map(x=>`<p data-inline-text>${readableText(x)}</p>`).join('')}</section>`:''}
     <section class="about-section"><div class="section-heading simple"><div><span class="eyebrow">${esc(C('labels','experienceEyebrow','KINH NGHIỆM'))}</span><h2>${esc(C('about','experienceTitle','Kinh nghiệm chuyên môn'))}</h2></div></div><div class="experience-grid">${experience.map(x=>`<article class="experience-card"><strong>${esc(x.years)}</strong><h3>${esc(x.area)}</h3><p>${esc(x.detail)}</p></article>`).join('')}</div></section>
     <section class="about-two-col">
       <article class="content-card"><div class="card-icon">${icon('user')}</div><h2>${esc(C('about','teachingTitle','Hoạt động giảng dạy'))}</h2><p>${esc(t.teaching || '')}</p></article>
       <article class="content-card"><div class="card-icon">${icon('book')}</div><h2>${esc(C('about','researchTitle','Nền tảng học thuật'))}</h2>${String(t.research || '').split(/\n\s*\n|\n/).filter(Boolean).map(x=>`<p data-inline-text>${readableText(x)}</p>`).join('')}</article>
     </section>
-    ${t.publicationAccess?`<section class="publication-access"><div class="publication-copy"><span class="eyebrow">NGHIÊN CỨU HỌC THUẬT</span><h2>${esc(t.publicationAccess.title || C('about','researchAccessTitle','Công trình khoa học và bài báo công bố'))}</h2><p>${esc(t.publicationAccess.description || C('about','researchAccessDescription','Vui lòng liên hệ giảng viên để được hỗ trợ truy cập.'))}</p>${(t.publicationAccess.items||[]).map(x=>`<a class="publication-item" href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title||'Công trình khoa học')} ${icon('external-link')}</a>`).join('')}<a class="btn publication-cta" href="${routeHref('lien-he.html')}">${esc(t.publicationAccess.actionLabel || C('about','researchUnlockAction','Liên hệ giảng viên để mở khóa'))} ${icon('arrow')}</a></div><div class="publication-lock"><div class="lock-orbit">${icon('lock')}</div><strong>${esc(t.publicationAccess.lockedLabel || C('about','researchLockedLabel','Nội dung giới hạn quyền truy cập'))}</strong><span>CÔNG TRÌNH · BÀI BÁO KHOA HỌC</span></div></section>`:''}
+    ${t.publicationAccess?`<section class="publication-access"><div class="publication-copy"><span class="eyebrow">${esc(C('labels','researchEyebrow','NGHIÊN CỨU HỌC THUẬT'))}</span><h2>${esc(t.publicationAccess.title || C('about','researchAccessTitle','Công trình khoa học và bài báo công bố'))}</h2><p>${esc(t.publicationAccess.description || C('about','researchAccessDescription','Vui lòng liên hệ giảng viên để được hỗ trợ truy cập.'))}</p>${(t.publicationAccess.items||[]).map(x=>`<a class="publication-item" href="${esc(x.url||'#')}" target="_blank" rel="noopener">${esc(x.title||'Công trình khoa học')} ${icon('external-link')}</a>`).join('')}<a class="btn publication-cta" href="${routeHref('lien-he.html')}">${esc(t.publicationAccess.actionLabel || C('about','researchUnlockAction','Liên hệ giảng viên để mở khóa'))} ${icon('arrow')}</a></div><div class="publication-lock"><div class="lock-orbit">${icon('lock')}</div><strong>${esc(t.publicationAccess.lockedLabel || C('about','researchLockedLabel','Nội dung giới hạn quyền truy cập'))}</strong><span>CÔNG TRÌNH · BÀI BÁO KHOA HỌC</span></div></section>`:''}
     <section class="about-section institute-section"><div class="section-heading simple"><div><span class="eyebrow">${esc(C('labels','instituteEyebrow','ĐƠN VỊ KẾT NỐI'))}</span><h2>${esc(C('about','instituteTitle','Đơn vị kết nối giảng viên'))}</h2></div></div>
       <article class="institute-card">${inst.logo?`<img src="${esc(asset(inst.logo))}" alt="${esc(C('labels','instituteLogoAlt','Logo đơn vị kết nối giảng viên'))}" loading="lazy">`:`<div class="institution-icon">${icon('building')}</div>`}<div><span class="institution-role">${esc(inst.role || 'Đơn vị kết nối giảng viên đào tạo')}</span><h3>${esc(inst.name || '')}</h3><p>${esc(inst.description || '')}</p></div></article>
     </section>
@@ -253,7 +319,7 @@ function courseBreadcrumb(c, sectionLabel) {
   return `<div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span><a href="${routeHref('chuong-trinh.html')}">${esc(C('navigation','courses','Chương trình học'))}</a><span>/</span><a href="${courseUrl(c)}">${esc(c.shortTitle || c.title)}</a>${sectionLabel && sectionLabel!=='Tổng quan môn học'?`<span>/</span>${esc(sectionLabel)}`:''}</div>`;
 }
 function courseSidebar(c, active) {
-  return `<aside class="course-sidebar"><div class="sidebar-course-name"><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><strong>${esc(c.shortTitle || c.title)}</strong></div><label class="course-section-picker" for="courseSectionSelect">Chọn mục trong môn học<select id="courseSectionSelect" class="course-section-select">${COURSE_SECTIONS.map(s=>`<option value="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}" ${active===s.id?'selected':''}>${esc(C('course',s.id,s.label))}</option>`).join('')}</select></label><nav aria-label="${esc(C('labels','courseSidebarAria','Nội dung môn học'))}">${COURSE_SECTIONS.map(s=>`<a class="${active===s.id?'active':''}" href="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}">${icon(s.icon)}<span>${esc(C('course',s.id,s.label))}</span></a>`).join('')}</nav><a class="sidebar-back" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></aside>`;
+  return `<aside class="course-sidebar"><div class="sidebar-course-name"><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><strong>${esc(c.shortTitle || c.title)}</strong></div><label class="course-section-picker" for="courseSectionSelect">${esc(C('labels','sectionPicker','Chọn mục trong môn học'))}<select id="courseSectionSelect" class="course-section-select">${COURSE_SECTIONS.map(s=>`<option value="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}" ${active===s.id?'selected':''}>${esc(C('course',s.id,s.label))}</option>`).join('')}</select></label><nav aria-label="${esc(C('labels','courseSidebarAria','Nội dung môn học'))}">${COURSE_SECTIONS.map(s=>`<a class="${active===s.id?'active':''}" href="${s.id==='overview'?courseUrl(c):courseSectionUrl(c,s.id)}">${icon(s.icon)}<span>${esc(C('course',s.id,s.label))}</span></a>`).join('')}</nav><a class="sidebar-back" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></aside>`;
 }
 function courseOverviewHTML(c) {
   const s = c.syllabus || {};
@@ -281,7 +347,7 @@ function syllabusHTML(c) {
 function slidesHTML(c) {
   if (c.lectureAccess?.mode === 'enrolled_only') {
     const access = c.lectureAccess;
-    return `<div class="section-page-intro"><span class="eyebrow">HỌC LIỆU THEO LỚP</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1></div><section class="content-card lecture-access-notice"><div class="locked-icon">${icon('lock')}</div><h2>${esc(access.title)}</h2><p>${esc(access.message)}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(access.action)} ${icon('arrow')}</a></section>`;
+    return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','classMaterials','HỌC LIỆU THEO LỚP'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1></div><section class="content-card lecture-access-notice"><div class="locked-icon">${icon('lock')}</div><h2>${esc(access.title)}</h2><p>${esc(access.message)}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(access.action)} ${icon('arrow')}</a></section>`;
   }
   const slides = c.slides || [];
   if (!slides.length) return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','learningMaterialsEyebrow','LEARNING MATERIALS'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1><p>${esc(C('course','slidesIntro','Slide và tài liệu giảng dạy được cập nhật theo từng buổi học.'))}</p></div><div class="empty-state"><div class="empty-state-icon">${icon('slides')}</div><h2>${esc(C('course','emptySlidesTitle','Bài giảng sẽ được cập nhật'))}</h2><p>${esc(C('course','emptySlidesText','Slide của môn học sẽ được đăng tải tại đây sau khi giảng viên hoàn thiện và sắp xếp theo từng buổi.'))}</p></div>`;
@@ -289,7 +355,7 @@ function slidesHTML(c) {
 }
 function resourceCard(x) {
   const languageKey = x.language === 'Tiếng Anh' ? 'English' : x.language;
-  return `<article class="resource-card" data-lang="${esc(languageKey || '')}" data-type="${esc(x.type || '')}"><div class="resource-meta"><span>${esc(x.language || '')}</span><small>${esc(x.type || '')}</small></div><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p><small class="publisher">${esc(x.publisher || '')}</small><a href="${esc(asset(x.url || '#'))}" target="_blank" rel="noopener">${esc(x.access || C('course','defaultResourceAction',C('course','openResource','Mở tài liệu')))} ${icon('arrow')}</a></article>`;
+  return `<article class="resource-card" data-lang="${esc(languageKey || '')}" data-type="${esc(x.type || '')}"><div class="resource-meta"><span>${esc(languageKey === 'English' ? C('course','english','English') : languageKey === 'Tiếng Việt' ? C('course','vietnamese','Tiếng Việt') : languageKey === 'Tiếng Việt / English' ? C('labels','bilingualResource',languageKey) : languageKey || '')}</span><small>${esc(x.type || '')}</small></div><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p><small class="publisher">${esc(x.publisher || '')}</small><a href="${esc(asset(x.url || '#'))}" target="_blank" rel="noopener">${esc(x.access || C('course','defaultResourceAction',C('course','openResource','Mở tài liệu')))} ${icon('arrow')}</a></article>`;
 }
 function referencesHTML(c) {
   const items = c.references || [];
@@ -305,7 +371,7 @@ function supportHTML(c) {
   return intro + `<div class="support-grid">${items.map(x=>{
     const link = x.url || (x.id === 'consult' ? contact.zaloUrl : '');
     const action = link ? `<a class="support-action" href="${esc(asset(link))}" ${link.startsWith('assets/resources/')?`download="${esc(link.split('/').pop())}"`: ''} target="_blank" rel="noopener">${esc(x.id==='consult'?C('course','consult','Kết nối Zalo với giảng viên'):(x.action || C('course','defaultSupportAction','Mở nội dung')))} ${icon('arrow')}</a>` : `<span class="support-status">${esc(x.label || C('course','defaultSupportStatus','Đang cập nhật'))}</span>`;
-    return `<article class="support-card"><div class="support-icon">${icon(x.id==='consult'?'contact':x.id==='prompts'?'image':x.id==='tutorials'?'book':'support')}</div><div class="support-copy"><span class="support-category">${esc(x.category || '')}</span><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p>${action}</div></article>`;
+    return `<article class="support-card"><div class="support-icon">${icon(x.id==='consult'?'contact':x.id==='prompts'?'image':x.id==='tutorials'?'book':'support')}</div><div class="support-copy"><span class="support-category">${esc(x.category || '')}</span><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p>${action}${locale === 'en' && link.startsWith('assets/resources/') ? `<small class="resource-original-language">${esc(C('labels','originalVietnamese','Document in Vietnamese'))}</small>` : ''}</div></article>`;
   }).join('')}</div>`;
 }
 function setupResourceFilters() {
@@ -341,13 +407,14 @@ function renderCourse() {
     return;
   }
   const sectionItem = COURSE_SECTIONS.find(x=>x.id===section) || COURSE_SECTIONS[0];
+  const sectionLabel = C('course', sectionItem.id, sectionItem.label);
   let content = '';
   if (section === 'overview') content = courseOverviewHTML(c);
   else if (section === 'syllabus') content = syllabusHTML(c);
   else if (section === 'slides') content = slidesHTML(c);
   else if (section === 'references') content = referencesHTML(c);
   else if (section === 'support') content = supportHTML(c);
-  target.innerHTML = `<div class="container page-pad course-page">${courseBreadcrumb(c, sectionItem.label)}<div class="course-page-layout">${courseSidebar(c,section)}<article class="course-page-main"><div class="course-tools"><p>${esc(C('course','printHint','Lưu nội dung mục đang xem để đọc hoặc sử dụng khi học.'))}</p><button type="button" class="print-button">${esc(C('course','printAction','In / Lưu PDF'))}</button></div><div class="print-only"><strong>${esc(c.title)}</strong><p>${esc(sectionItem.label)} · ${esc(DB.portal.teacher?.name || DB.portal.owner || '')}</p></div>${content}<div class="course-page-bottom"><a href="${courseUrl(c)}">← ${esc(c.shortTitle || c.title)}</a><a href="${routeHref('lien-he.html')}">${esc(C('labels','courseHelpLink','Cần hỗ trợ? Kết nối giảng viên'))} ${icon('arrow')}</a></div></article></div></div>`;
+  target.innerHTML = `<div class="container page-pad course-page">${courseBreadcrumb(c, section === 'overview' ? '' : sectionLabel)}<div class="course-page-layout">${courseSidebar(c,section)}<article class="course-page-main"><div class="course-tools"><p>${esc(C('course','printHint','Lưu nội dung mục đang xem để đọc hoặc sử dụng khi học.'))}</p><button type="button" class="print-button">${esc(C('course','printAction','In / Lưu PDF'))}</button></div><div class="print-only"><strong>${esc(c.title)}</strong><p>${esc(sectionLabel)} · ${esc(DB.portal.teacher?.name || DB.portal.owner || '')}</p></div>${content}<div class="course-page-bottom"><a href="${courseUrl(c)}">← ${esc(c.shortTitle || c.title)}</a><a href="${routeHref('lien-he.html')}">${esc(C('labels','courseHelpLink','Cần hỗ trợ? Kết nối giảng viên'))} ${icon('arrow')}</a></div></article></div></div>`;
   $('.course-section-select',target)?.addEventListener('change',e => {window.location.href=e.target.value;});
   $('.print-button',target)?.addEventListener('click', () => window.print());
   setupResourceFilters();
@@ -362,7 +429,7 @@ function renderContact() {
 }
 function renderSitemap() {
   const courses = DB.courses || [];
-  $('#sitemapContent').innerHTML = `<div class="container page-pad"><div class="page-intro"><div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span>${esc(C('labels','siteMapCrumb','Sơ đồ website'))}</div><div class="eyebrow">${esc(C('labels','sitemapEyebrow','SITE MAP'))}</div><h1>${esc(C('labels','siteMapTitle','Sơ đồ website'))}</h1><p>${esc(C('labels','siteMapDescription','Cấu trúc các trang và nội dung trong Cổng thông tin học tập THANH.'))}</p></div><div class="sitemap-tree">
+  $('#sitemapContent').innerHTML = `<div class="container page-pad"><div class="page-intro"><div class="breadcrumb"><a href="${routeHref('index.html')}">${esc(C('labels','breadcrumbHome','Trang chủ'))}</a><span>/</span>${esc(C('labels','siteMapCrumb','Sơ đồ website'))}</div><div class="eyebrow">${esc(C('labels','siteMapEyebrow','SITE MAP'))}</div><h1>${esc(C('labels','siteMapTitle','Sơ đồ website'))}</h1><p>${esc(C('labels','siteMapDescription','Cấu trúc các trang và nội dung trong Cổng thông tin học tập THANH.'))}</p></div><div class="sitemap-tree">
     <a class="sitemap-node root" href="${routeHref('index.html')}">${icon('building')}<span>${esc(C('labels','breadcrumbHome','Trang chủ'))}</span></a>
     <a class="sitemap-node" href="${routeHref('gioi-thieu.html')}">${icon('user')}<span>${esc(C('navigation','about','Giới thiệu'))}</span></a>
     <div class="sitemap-group"><a class="sitemap-node" href="${routeHref('chuong-trinh.html')}">${icon('book')}<span>${esc(C('navigation','courses','Chương trình học'))}</span></a><div class="sitemap-children">${courses.map(c=>`<div class="sitemap-course"><a class="sitemap-node ${c.status!=='open'?'muted':''}" href="${courseUrl(c)}"><span>${esc(C('labels','coursePrefixLabel','Môn'))} ${esc(c.number)}</span><strong>${esc(c.title)}</strong></a><div class="sitemap-subchildren">${COURSE_SECTIONS.slice(1).map(s=>`<a href="${courseSectionUrl(c,s.id)}">${esc(C('course',s.id,s.label))}</a>`).join('')}</div></div>`).join('')}</div></div>
@@ -370,6 +437,7 @@ function renderSitemap() {
   </div></div>`;
 }
 function renderShell() {
+  document.title = locale === 'vi' ? vietnameseTitle : 'THANH Learning Portal';
   if(disposeHeroMotion){disposeHeroMotion();disposeHeroMotion=null;}
   renderHeader(); renderFooter();
   const page = document.body.dataset.page;
@@ -405,6 +473,7 @@ function routeFromHash() {
   window.scrollTo({top:0,behavior:'auto'});
 }
 async function init() {
+  vietnameseTitle = document.title;
   try {
     if (window.PREVIEW_MODE && window.PREVIEW_DATA) DB = window.PREVIEW_DATA;
     else {
@@ -413,6 +482,12 @@ async function init() {
       DB = await response.json();
     }
     if (DB.schema !== 'LEARNING_PORTAL' || !Array.isArray(DB.courses)) throw new Error('Dữ liệu cổng thông tin chưa đúng cấu trúc.');
+    vietnameseDB = DB;
+    if (!window.PREVIEW_MODE) {
+      try {
+        if (localStorage.getItem(localeKey) === 'en') await selectLocale('en');
+      } catch {}
+    }
     if (window.PREVIEW_MODE) routeFromHash();
     else renderShell();
   } catch (error) {
