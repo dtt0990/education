@@ -1,0 +1,14 @@
+THANH LEARNING PORTAL | CẬP NHẬT BẢN TIẾNG ANH
+
+Mở nhánh và thư mục nguồn mà GitHub Pages đang xuất bản. Thay hoặc thêm bốn tệp theo đúng đường dẫn:
+
+    404.html
+    assets/css/portal.css
+    assets/js/portal.js
+    data/courses.en.json
+
+Commit bốn tệp cùng lúc. Giữ data/courses.json làm dữ liệu tiếng Việt. Sau khi GitHub Pages xuất bản, mở website trong cửa sổ riêng tư, chọn EN, mở đề cương và tài liệu tham khảo của một môn, rồi chọn VI để trở lại tiếng Việt. Nếu tab đang mở vẫn hiện bản cũ, tải lại trang với Ctrl+F5.
+
+Khi sửa đề cương, cập nhật các trường tương ứng trong data/courses.en.json. Môn học khớp theo ID. Buổi học khớp theo số thứ tự. Mục tài liệu và hỗ trợ khớp theo ID. Bối cảnh thực hành khớp theo đường dẫn ảnh. Các danh sách còn lại dùng cùng thứ tự với bản tiếng Việt.
+
+Gói này áp dụng cho website trên GitHub Pages. Tệp xem trước và chỉnh sửa HTML ngoại tuyến là bản riêng. PDF, Word và slide đính kèm dùng ngôn ngữ gốc.

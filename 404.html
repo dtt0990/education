@@ -1,1 +1,45 @@
-<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Không tìm thấy trang | THANH</title><base href="./"><link rel="stylesheet" href="assets/css/portal.css?v=20261117-course06"></head><body><main class="container page-pad"><section class="locked-panel"><h1>Không tìm thấy trang</h1><p>Địa chỉ có thể đã thay đổi hoặc nội dung chưa được xuất bản.</p><a class="btn" href="index.html">Về trang chủ</a></section></main></body></html>
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Không tìm thấy trang | THANH</title>
+  <base href="./">
+  <link rel="stylesheet" href="assets/css/portal.css?v=20261117-course06">
+</head>
+<body>
+  <main class="container page-pad">
+    <section class="locked-panel">
+      <button class="locale-toggle" type="button" id="errorLanguage" lang="en" aria-label="Switch to English">EN</button>
+      <h1 id="errorTitle">Không tìm thấy trang</h1>
+      <p id="errorDescription">Địa chỉ có thể đã thay đổi hoặc nội dung chưa được xuất bản.</p>
+      <a class="btn" id="errorHome" href="index.html">Về trang chủ</a>
+    </section>
+  </main>
+  <script>
+    const messages = {
+      vi: ['Không tìm thấy trang', 'Địa chỉ có thể đã thay đổi hoặc nội dung chưa được xuất bản.', 'Về trang chủ', 'en', 'Switch to English'],
+      en: ['Page not found', 'The address may have changed or this content may not have been published yet.', 'Back to home', 'vi', 'Chuyển sang tiếng Việt']
+    };
+    const button = document.getElementById('errorLanguage');
+    const storageKey = 'thanh-portal-language';
+    function showLanguage(locale) {
+      const [title, description, home, next, action] = messages[locale];
+      document.documentElement.lang = locale;
+      document.title = title + ' | THANH';
+      document.getElementById('errorTitle').textContent = title;
+      document.getElementById('errorDescription').textContent = description;
+      document.getElementById('errorHome').textContent = home;
+      button.lang = next;
+      button.textContent = next.toUpperCase();
+      button.setAttribute('aria-label', action);
+    }
+    try { if (localStorage.getItem(storageKey) === 'en') showLanguage('en'); } catch {}
+    button.addEventListener('click', () => {
+      const next = button.lang;
+      showLanguage(next);
+      try { localStorage.setItem(storageKey, next); } catch {}
+    });
+  </script>
+</body>
+</html>
