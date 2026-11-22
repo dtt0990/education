@@ -477,3 +477,190 @@ body{background:radial-gradient(ellipse at 0 12%,#dcebe7 0,transparent 38%),radi
   .nav-toggle { order: 1; flex-shrink: 0; }
   .header-inner .brand { flex-shrink: 1; }
 }
+
+/* Glass layers on the home hero and course catalog. */
+@media (min-width: 781px) {
+  .home-hero-visual { display: flex; flex-direction: column; padding: 12px 0 28px; }
+  .featured-course-chip { position: relative; inset: auto; }
+}
+.hero-glass-scene {
+  display: grid;
+  place-items: center;
+  min-height: 300px;
+  flex: 1;
+  perspective: 800px;
+  pointer-events: none;
+}
+.hero-glass-stack {
+  position: relative;
+  width: min(78%, 315px);
+  height: 216px;
+  transform-style: preserve-3d;
+  transform: rotateY(-12deg) rotateX(8deg);
+}
+.hero-glass-pane {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  top: var(--pane-top);
+  left: var(--pane-left);
+  width: 84%;
+  height: 83px;
+  padding: 11px 17px;
+  overflow: hidden;
+  border: 1px solid #c8f4ff9c;
+  border-radius: 19px;
+  background: linear-gradient(135deg, var(--pane-color), #102940e8 75%);
+  box-shadow: inset 0 1px 0 #ffffffa8, inset 0 -3px 0 #85dfe23b, 0 12px 24px #0006;
+  color: #f3fbff;
+  font-size: clamp(.82rem, 2vw, 1.13rem);
+  font-weight: 600;
+}
+.hero-glass-pane svg { width: 25px; height: 25px; flex: none; color: #cffbf4; }
+.hero-glass-practice { --pane-top: 12px; --pane-left: 16%; --pane-color: #6066a6; }
+.hero-glass-lecture { --pane-top: 65px; --pane-left: 8%; --pane-color: #286583; }
+.hero-glass-syllabus { --pane-top: 118px; --pane-left: 0%; --pane-color: #297373; }
+.hero-glass-pane::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 32%;
+  background: linear-gradient(90deg, transparent, #e0ffff50, transparent);
+  transform: translateX(-120%) skewX(-22deg);
+  pointer-events: none;
+}
+@media (min-width: 781px) and (prefers-reduced-motion: no-preference) {
+  .hero-glass-pane::after { animation: hero-glass-reflection .85s .28s ease-out both; }
+  .hero-glass-lecture::after { animation-delay: .38s; }
+  .hero-glass-syllabus::after { animation-delay: .48s; }
+}
+@keyframes hero-glass-reflection {
+  to { transform: translateX(430%) skewX(-22deg); }
+}
+.course-card {
+  background: radial-gradient(ellipse at top right, #d9ede8a8, transparent 60%),
+              linear-gradient(150deg, #ffffff, #f3f8fa);
+  border-color: #fff;
+  box-shadow: inset 0 1px #fff, 0 0 0 1px #cedfe3, 0 12px 26px #193a5012;
+}
+.course-card:focus-visible { outline: 3px solid #28676f; outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .course-card:hover { box-shadow: inset 0 1px #fff, 0 0 0 1px #9fbdc3, 0 16px 32px #193a5024; }
+}
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .course-card:active { transform: scale(.99); }
+}
+@media (max-width: 780px) {
+  .hero-glass-scene { height: auto; min-height: 0; padding: 8px 0 12px; }
+  .hero-glass-stack { width: min(90%, 300px); height: 143px; }
+  .hero-glass-pane { height: 60px; }
+  .hero-glass-pane svg { width: 20px; height: 20px; }
+  .hero-glass-practice { --pane-top: 0px; }
+  .hero-glass-lecture { --pane-top: 39px; }
+  .hero-glass-syllabus { --pane-top: 78px; }
+}
+
+/* Shared glass surfaces and feedback across the portal. */
+@media screen {
+  :is(.content-card, .experience-card, .institution-card, .institute-card,
+      .resource-card, .support-card, .track-card, .section-link-card,
+      .contact-card, .qr-card, .course-sidebar, .locked-panel) {
+    background: radial-gradient(ellipse at top right, #e0eeeb9c, transparent 58%),
+                linear-gradient(150deg, #fff, #f4f9fa);
+    border: 1px solid white;
+    box-shadow: inset 0 1px white, 0 0 0 1px #cfdee3, 0 10px 24px #193a500d;
+  }
+  :is(.section-link-icon, .support-icon, .locked-icon, .session-num) {
+    background: linear-gradient(145deg, #f6ffff, #d6ebec 75%);
+    color: #214e62;
+    border: 1px solid #cde2e6;
+    box-shadow: inset 0 1px #fff, 0 3px 8px #21444c10;
+  }
+  .track-copy details[open] {
+    padding: 0 12px 10px;
+    border-radius: 12px;
+    background: #e9f2f4;
+    box-shadow: inset 0 1px #cbdfe4;
+  }
+  .course-sidebar nav a[aria-current="page"] {
+    box-shadow: inset 3px 0 #417983, inset 0 1px #fff;
+  }
+  .resource-toolbar { flex-wrap: wrap; }
+  .resource-toolbar .filter-select { min-width: 0; max-width: 100%; min-height: 44px; }
+  .resource-filter-status { color: #395763; font-size: .875rem; margin: 8px 0 16px; }
+  :is(.site-header, .course-page, .contact-layout, .about-section, .sitemap-tree)
+  :is(a, button, select, summary, input):focus-visible {
+    outline: 3px solid #287581;
+    outline-offset: 3px;
+  }
+  .locale-toggle:active { background: #cde8eb; }
+}
+@media screen and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :is(.section-link-card, .sitemap-node, .locale-toggle, .print-button) {
+    transition: transform .16s ease-out, background-color .16s ease-out;
+  }
+  :is(.section-link-card, .sitemap-node):hover { transform: translateY(-2px); }
+}
+@media screen and (max-width: 780px) {
+  .resource-toolbar .filter-select { flex: 1 1 220px; width: 100%; }
+  .print-button { min-height: 44px; }
+  .course-page-main :is(h1, h2, h3, .publisher) { overflow-wrap: anywhere; }
+}
+@media print {
+  .resource-filter-status, .hero-glass-scene { display: none; }
+}
+
+.resume-section { display: block; margin-top: 4px; color: #e0f1f7; font-size: .9rem; }
+.learning-path { margin-top: 20px; }
+.learning-path ol {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+}
+.learning-path li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: center;
+  background: #eaf4f6;
+  border-radius: 14px;
+  padding: 4px 10px 4px 0;
+}
+.learning-path li > span { text-align: center; }
+.learning-path li > span svg { width: 18px; height: 18px; }
+.learning-path input { width: 24px; height: 24px; margin: auto; accent-color: #216c72; }
+.learning-path a { color: #214a5a; display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+.learning-path small { display: block; color: #3d5b69; padding-bottom: 7px; }
+.learning-progress-status:empty { display: none; }
+#course-practice { scroll-margin-top: 100px; }
+@media (max-width: 1000px) {
+  .learning-path ol { grid-template-columns: minmax(0, 1fr); }
+}
+@media print {
+  .learning-path { display: none !important; }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .resource-returning { animation: resource-return .18s ease-out; }
+  .track-copy details[open] > p:first-of-type { animation: resource-return .18s ease-out; }
+  .learning-path input:checked { animation: learning-check .2s ease-out; }
+  @keyframes resource-return {
+    from { opacity: .72; }
+    to { opacity: 1; }
+  }
+  @keyframes learning-check {
+    50% { transform: scale(1.12); }
+  }
+}
+@media screen and (min-width: 781px) and (prefers-reduced-motion: no-preference) {
+  .section-motion { animation: section-arrival .34s ease-out; }
+  .section-motion:focus-within,
+  .resource-returning:focus-within { animation: none; }
+  @keyframes section-arrival {
+    from { opacity: .84; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
