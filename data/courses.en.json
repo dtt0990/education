@@ -1,0 +1,1400 @@
+{
+  "portal": {
+    "name": "Learning Portal",
+    "subtitle": "A space for learning and course resources",
+    "copy": {
+      "navigation": {
+        "home": "Home",
+        "about": "About",
+        "courses": "Courses",
+        "contact": "Contact",
+        "connect": "Connect on Zalo"
+      },
+      "home": {
+        "eyebrow": "THANH · LEARNING PORTAL",
+        "title": "Learn with purpose | Put it into practice",
+        "description": "Explore course outlines, lectures and practical resources organized by subject.",
+        "primaryAction": "Explore courses",
+        "secondaryAction": "Meet the lecturer",
+        "featuredLabel": "Open course",
+        "catalogTitle": "Training and courses",
+        "catalogDescription": "Choose a course to view its syllabus, lectures and resources.",
+        "viewAll": "See all courses",
+        "openLabel": "Open",
+        "lockedLabel": "Temporarily locked",
+        "featuredAction": "View course",
+        "heroImageAlt": "Layers of glass and a network of connections in the age of AI",
+        "playMotion": "Play animation",
+        "pauseMotion": "Pause"
+      },
+      "about": {
+        "eyebrow": "ABOUT THE LECTURER",
+        "title": "Đoàn Tuấn Thanh",
+        "intro": "Bringing professional practice, teaching and research together.",
+        "bioTitle": "About",
+        "experienceTitle": "Professional experience",
+        "teachingTitle": "Teaching",
+        "researchTitle": "Academic background",
+        "instituteTitle": "Affiliation",
+        "institutionsTitle": "Institutions where I have taught or provided training",
+        "institutionsDescription": "I contribute as a visiting lecturer, guest speaker or adviser, depending on the program.",
+        "institutionPlaceholder": "Institution logo coming soon",
+        "contactTitle": "Get in touch",
+        "contactDescription": "I develop course materials and lesson plans tailored to each group of learners and to the needs of schools and businesses. Get in touch to discuss your audience, objectives and training content.",
+        "perspectiveTitle": "The lecturer’s perspective",
+        "researchAccessTitle": "Research and publications",
+        "researchAccessDescription": "Browse research and articles published in Vietnam and internationally. Access is restricted. Please contact the lecturer directly for assistance.",
+        "researchLockedLabel": "Restricted access",
+        "researchUnlockAction": "Contact the lecturer for access"
+      },
+      "catalog": {
+        "eyebrow": "COURSE CATALOG",
+        "title": "Course catalog",
+        "description": "Course content becomes available according to the teaching schedule.",
+        "searchPlaceholder": "Search by course name…",
+        "allStatus": "All statuses",
+        "openStatus": "Open",
+        "lockedStatus": "Temporarily locked",
+        "notFound": "No matching courses",
+        "openAction": "Open course",
+        "lockedAction": "View course details"
+      },
+      "course": {
+        "overview": "Course overview",
+        "syllabus": "Syllabus",
+        "slides": "Lectures",
+        "references": "References",
+        "support": "Learner support",
+        "lockedTitle": "Course content is temporarily locked",
+        "lockedMessage": "Contact the administrator to request access.",
+        "backToCatalog": "Back to courses",
+        "sectionIntro": "Choose a section to explore.",
+        "syllabusIntro": "Learning objectives, course content, teaching methods and assessment requirements.",
+        "slidesIntro": "Slides and teaching materials are updated for each session.",
+        "referencesIntro": "Public resources to read, consult and download.",
+        "supportIntro": "Tools, practice guides and ways to contact the lecturer.",
+        "emptySlidesTitle": "Lectures coming soon",
+        "emptySlidesText": "Course slides will appear here once the lecturer has prepared them and organized them by session.",
+        "emptyReferencesTitle": "References are being updated",
+        "emptySupportTitle": "Support resources are being updated",
+        "filterLanguage": "All languages",
+        "filterType": "All resource types",
+        "allLanguages": "All languages",
+        "vietnamese": "Vietnamese",
+        "english": "English",
+        "openResource": "Open resource",
+        "downloadResource": "View or download",
+        "consult": "Contact the lecturer on Zalo",
+        "syllabusCardDescription": "View learning objectives, course content and the study plan.",
+        "slidesCardDescription": "Lecture content is available to enrolled learners.",
+        "referencesCardDescription": "Browse resources in Vietnamese and English.",
+        "supportCardDescription": "Use course tools and contact the lecturer.",
+        "courseHelpLink": "Need help? Contact the lecturer",
+        "trackIntro": "The courses share a common foundation, with tasks and deliverables tailored to each discipline.",
+        "trackDetails": "View tasks and deliverables",
+        "defaultSlideType": "Lecture",
+        "defaultResourceAction": "Open resource",
+        "defaultSupportAction": "View content",
+        "defaultSupportStatus": "Coming soon",
+        "printAction": "Print / Save as PDF",
+        "printHint": "Save the section you’re viewing to read or use while studying."
+      },
+      "contact": {
+        "eyebrow": "CONTACT THE LECTURER",
+        "title": "Contact the lecturer",
+        "description": "Ask about courses, lectures, references or training.",
+        "infoTitle": "Contact information",
+        "phoneLabel": "Phone / Zalo",
+        "zaloTitle": "Connect on Zalo",
+        "qrTitle": "Scan the QR code to connect",
+        "qrDescription": "Scan the code with the Zalo app to send a direct message.",
+        "openZalo": "Open Zalo",
+        "emailLabel": "Email",
+        "emailAction": "Send email"
+      },
+      "footer": {
+        "tagline": "Courses and practical resources by subject",
+        "siteMapTitle": "Navigation",
+        "contactTitle": "Connect",
+        "ownerPrefix": "Built and maintained by",
+        "sitemapLabel": "Site map",
+        "zaloLinkLabel": "Personal Zalo",
+        "emailLabel": "Email the lecturer",
+        "phoneLabel": "Mobile/Zalo/WhatsApp: 0986 164 209"
+      },
+      "labels": {
+        "breadcrumbHome": "Home",
+        "coursePrefix": "Course",
+        "coursePrefixUpper": "COURSE",
+        "experienceEyebrow": "EXPERIENCE",
+        "instituteEyebrow": "AFFILIATION",
+        "institutionsEyebrow": "TEACHING",
+        "courseContentTitle": "Course content",
+        "courseContentIntro": "Choose a section to explore.",
+        "courseOutlineEyebrow": "SYLLABUS",
+        "learningMaterialsEyebrow": "LEARNING MATERIALS",
+        "referenceLibraryEyebrow": "REFERENCES",
+        "learnerSupportEyebrow": "LEARNER SUPPORT",
+        "syllabusOverviewTitle": "Course introduction",
+        "objectivesTitle": "Learning objectives",
+        "outcomesTitle": "Learning outcomes",
+        "sessionPlanTitle": "Session plan",
+        "outputLabel": "DELIVERABLES",
+        "tracksTitle": "Practice by discipline",
+        "taskLabel": "Task",
+        "workflowLabel": "Steps",
+        "productLabel": "Deliverable",
+        "toolsLabel": "Tools",
+        "teachingApproachTitle": "Learning methods",
+        "assessmentTitle": "Assessment",
+        "projectRubricTitle": "Mini-project assessment criteria",
+        "siteMapTitle": "Site map",
+        "siteMapDescription": "Pages and content in the THANH Learning Portal.",
+        "courseNotFoundTitle": "Course not found",
+        "searchNotFound": "No matching courses",
+        "backToCourse": "Back to course",
+        "homeProgramsEyebrow": "COURSES",
+        "profileBrandEyebrow": "THANH · LEARNING PORTAL",
+        "catalogSearchAria": "Search courses",
+        "catalogFilterAria": "Filter by status",
+        "courseSidebarAria": "Course sections",
+        "trackDetailsLabel": "View tasks and deliverables",
+        "lecturerLabel": "Lecturer",
+        "zaloQrAlt": "The lecturer’s Zalo QR code",
+        "courseHelpLink": "Need help? Contact the lecturer",
+        "homeCrumb": "Home",
+        "siteMapCrumb": "Site map",
+        "coursePrefixLabel": "Course",
+        "courseOverviewCategory": "COURSES",
+        "portalTagline": "LEARNING PORTAL",
+        "courseCategoryDefault": "Training and courses",
+        "brandMarkAlt": "THANH logo",
+        "teacherMarkAlt": "THANH brand mark",
+        "instituteLogoAlt": "Affiliated institution logo",
+        "schoolLogoAlt": "Education institution logo",
+        "menuOpenAria": "Open menu",
+        "mainNavAria": "Main navigation",
+        "unknownPageTitle": "The portal could not load",
+        "unknownPageDescription": "Reload the page or check the data/courses.json file.",
+        "sectionPicker": "Choose a course section",
+        "researchEyebrow": "ACADEMIC RESEARCH",
+        "classMaterials": "CLASS MATERIALS",
+        "perspectiveEyebrow": "PERSONAL PERSPECTIVE",
+        "socialLink": "Connect on {platform} (opens in a new tab)",
+        "playBackground": "Play background video",
+        "pauseBackground": "Pause background video",
+        "siteMapEyebrow": "SITE MAP",
+        "originalVietnamese": "Document in Vietnamese",
+        "bilingualResource": "Vietnamese / English"
+      }
+    },
+    "teacher": {
+      "role": "Visiting Lecturer",
+      "bio": "Thanh has more than 15 years of marketing experience. He spent eight years in B2C retail and led marketing teams at Co.opmart supermarkets. He then worked in B2B marketing for six years, focusing on branding, communications, marketing plans, international events and trade shows.\n\nWorking in both settings shaped an approach to marketing grounded in operations, customer behavior and business decisions.",
+      "experience": [
+        {
+          "years": "8 years",
+          "area": "B2C retail",
+          "detail": "Led marketing teams at Co.opmart supermarkets."
+        },
+        {
+          "years": "6 years",
+          "area": "B2B marketing",
+          "detail": "Focused on branding, corporate communications, marketing plans, international events and trade shows."
+        }
+      ],
+      "research": "Bachelor’s degree in Marketing.\nMSc in Marketing.\nDoctoral studies in Economics and Management at Tomas Bata University in Zlín, Czech Republic.",
+      "positioning": "Connecting marketing practice with research and teaching.",
+      "teaching": "Alongside his marketing work, Thanh teaches and speaks as a guest lecturer at colleges and universities.",
+      "perspective": "I built this learning portal to share what I’ve learned through work, research and teaching. I select and organize the material so it’s easy to follow, grounded in research and connected to real situations. I hope the resources and conversations here help learners broaden their perspective, think independently and apply what they learn with confidence.",
+      "publicationAccess": {
+        "title": "Research and publications",
+        "description": "Research, journal articles and other publications in Vietnam and internationally. Contact the lecturer to discuss access.",
+        "lockedLabel": "Restricted access",
+        "actionLabel": "Contact the lecturer for access"
+      }
+    },
+    "institute": {
+      "role": "Lecturer placement and training partner",
+      "description": "Connects lecturers with education providers and suitable training programs.",
+      "name": "Institute for Applied Psychology and Education"
+    },
+    "social": {
+      "title": "Connect and share",
+      "eyebrow": "STAY IN TOUCH",
+      "description": "Continue the conversation about learning, work and practical experience.",
+      "linkedinDescription": "Perspectives on marketing, research and career development.",
+      "facebookDescription": "Personal reflections on work, teaching and life.",
+      "linkedinCount": "14.6K",
+      "facebookCount": "5.9K",
+      "followersLabel": "followers",
+      "linkedinDetail": "500+ connections",
+      "facebookDetail": "Giving back to the community",
+      "linkedinArt": "CONNECTING KNOWLEDGE\nWITH PRACTICE",
+      "facebookArt": "SHARING EXPERIENCES\nWITH THE COMMUNITY",
+      "linkedinEyebrow": "Professional perspectives",
+      "facebookEyebrow": "Stories and experiences",
+      "action": "Connect with Thanh Đoàn",
+      "updatedLabel": "Figures from profile screenshots provided on November 16, 2026."
+    },
+    "institutions": [
+      {
+        "name": "Ho Chi Minh City College of Culture and Arts",
+        "note": "Partner institution for Course 01."
+      },
+      {
+        "name": "Ho Chi Minh City College of Economics and Technology",
+        "note": ""
+      },
+      {
+        "name": "Ho Chi Minh City Open University",
+        "note": ""
+      },
+      {
+        "name": "Van Lang University",
+        "note": ""
+      }
+    ]
+  },
+  "courses": {
+    "ai-tech": {
+      "title": "Applying Technology in the AI Era",
+      "shortTitle": "Technology in the AI Era",
+      "category": "Technology and Digital Literacy",
+      "description": "Learn to brief AI tools, combine them, verify their output and refine the results for study, creative projects and work.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Use AI in your studies and work.",
+      "duration": "8 instructional periods",
+      "format": "2 in-person sessions",
+      "method": "20% theory · 80% practice",
+      "classSize": "",
+      "audienceLabel": "Course materials designed for arts and culture students.",
+      "syllabus": {
+        "overview": "Learn to apply AI to study, creative work and professional tasks. Practice defining a task, preparing inputs, briefing AI tools, checking the output, editing it and producing a finished deliverable.",
+        "objectives": [
+          "Understand the basic concepts, capabilities and limits of generative AI.",
+          "Define tasks, prepare inputs and brief AI tools.",
+          "Use AI to research, develop ideas and create work relevant to your field.",
+          "Verify, edit and use AI outputs safely and responsibly."
+        ],
+        "outcomes": [
+          "Identify tasks in study and work where AI can help.",
+          "Finish and export a deliverable that meets the brief.",
+          "Verify and edit the output, and repeat the process independently on a new task."
+        ],
+        "sessions": [
+          {
+            "title": "What can AI do today?",
+            "focus": "Use arts-based demonstrations to assess AI’s capabilities and limits.",
+            "output": "Complete a small AI task independently.",
+            "number": 1
+          },
+          {
+            "title": "Briefing AI tools",
+            "focus": "Write a brief, provide source material, set criteria and give feedback.",
+            "output": "A brief and two documented revisions.",
+            "number": 2
+          },
+          {
+            "title": "Research and idea development",
+            "focus": "Find sources, compare options and choose a creative direction.",
+            "output": "A concept with a rationale.",
+            "number": 3
+          },
+          {
+            "title": "Verification and responsible use",
+            "focus": "Check facts, copyright, images, voices and data.",
+            "output": "A risk checklist for the deliverable.",
+            "number": 4
+          },
+          {
+            "title": "Creative practice by discipline",
+            "focus": "Create or revise images, video, performances or audio.",
+            "output": "A draft of a professional deliverable.",
+            "number": 5
+          },
+          {
+            "title": "Editing and post-production",
+            "focus": "Correct errors, organize files and export in the required format.",
+            "output": "An edited test export.",
+            "number": 6
+          },
+          {
+            "title": "Connecting the workflow",
+            "focus": "Assign roles, combine tools and complete the deliverable.",
+            "output": "A short, repeatable workflow.",
+            "number": 7
+          },
+          {
+            "title": "Mini-project",
+            "focus": "Present the deliverable, explain revisions and try a similar task.",
+            "output": "A finished deliverable and evidence of independent work.",
+            "number": 8
+          }
+        ],
+        "teachingApproach": [
+          "Short explanations with live demonstrations.",
+          "Practice through discipline-specific scenarios and tasks.",
+          "Start with guided practice, then work independently.",
+          "Critique, verify and revise the deliverable."
+        ],
+        "assessment": [
+          {
+            "name": "Exercises",
+            "description": "Assess practical work completed during the course."
+          },
+          {
+            "name": "Mini-project",
+            "description": "Assess the final practical deliverable."
+          },
+          {
+            "name": "Participation",
+            "description": "Assess engagement and completion of learning activities."
+          }
+        ],
+        "projectRubric": [
+          {
+            "name": "Creativity"
+          },
+          {
+            "name": "Prompting skills"
+          },
+          {
+            "name": "Quality and practical application"
+          },
+          {
+            "name": "Presentation"
+          }
+        ]
+      },
+      "lockedMessage": "Contact the administrator to request access.",
+      "tracks": [
+        {
+          "short": "FILM",
+          "title": "Acting and Directing",
+          "subtitle": "Research characters, stage scenes and tell stories visually.",
+          "task": "Choose acting or directing for the same short scene.",
+          "workflow": "Research the character, develop an approach, rehearse or storyboard, then revise.",
+          "product": "Actors: a 30–60 second self-tape. Directors: a shot list, a 3–6 frame storyboard and a scene illustration.",
+          "tools": "Conversational assistant, reference images and captions. AI video is demonstrated when available.",
+          "image": "assets/images/ai-track-actor.webp"
+        },
+        {
+          "short": "VISUAL ARTS",
+          "title": "Photography, Painting and Design",
+          "subtitle": "Develop concepts and control image quality.",
+          "task": "Design a visual concept for an artwork or exhibition.",
+          "workflow": "Analyze the brief, build a mood board, create or edit images, lay out and finish the work.",
+          "product": "A mood board and visual work with before-and-after versions.",
+          "tools": "ChatGPT Images or Gemini, Canva and specialist tools where available.",
+          "image": "assets/images/ai-track-visual.webp"
+        },
+        {
+          "short": "MUSIC",
+          "title": "Vocal Performance",
+          "subtitle": "Prepare, self-assess, rehearse and edit a recording.",
+          "task": "Complete a performance that you record yourself.",
+          "workflow": "Choose and analyze a piece, plan, record, listen back and revise.",
+          "product": "A 30–60 second recording, a self-assessment log and an audio or video file.",
+          "tools": "Conversational assistant, recording tools and captions. AI music is used only in controlled demonstrations.",
+          "image": "assets/images/ai-track-vocal.webp"
+        }
+      ],
+      "references": [
+        {
+          "type": "Competency framework · PDF",
+          "title": "AI Competency Framework for Students (official Vietnamese edition)",
+          "description": "UNESCO’s official Vietnamese edition outlines the skills students need to understand, use and create with AI responsibly. It replaces the reference translation previously linked via Zenodo.",
+          "access": "Read or download PDF",
+          "id": "unesco-ai-vn"
+        },
+        {
+          "type": "Framework",
+          "description": "The student AI competency framework covers a human-centered mindset, ethics, AI techniques and applications, and AI system design.",
+          "access": "Read resource",
+          "id": "unesco-framework"
+        },
+        {
+          "type": "Online learning material",
+          "description": "A guide to getting started, prompting, personalizing ChatGPT and working with files, search and research.",
+          "access": "Learn online",
+          "id": "openai-academy"
+        },
+        {
+          "type": "Guide",
+          "description": "Learn to write clear instructions, provide context and refine results through multiple turns.",
+          "access": "Read guide",
+          "id": "openai-prompt"
+        },
+        {
+          "type": "Online course",
+          "description": "Learn to design and refine prompts and use AI for study, analysis and work.",
+          "access": "View course",
+          "id": "google-prompting"
+        },
+        {
+          "type": "Online course",
+          "description": "Lessons on developing ideas and creating or editing images, content and designs with Canva AI.",
+          "access": "Learn online",
+          "id": "canva-ai"
+        },
+        {
+          "type": "Tutorial library",
+          "description": "Tutorials for Adobe’s creative, image and video tools.",
+          "access": "View tutorials",
+          "id": "adobe-learn"
+        },
+        {
+          "type": "Guide · Online / PDF",
+          "title": "Guide to Using AI in Teaching and Learning",
+          "description": "An introduction to AI and generative AI in education. It covers learner roles, data privacy and transparent assessment, and supports sessions on AI capabilities, task design and responsible use.",
+          "access": "Read online or open guide",
+          "id": "vnies-ai-guide",
+          "publisher": "Vietnam National Institute of Educational Sciences (VNIES)"
+        },
+        {
+          "type": "International guide · PDF",
+          "title": "Guidance for Generative AI in Education and Research (Vietnamese edition)",
+          "description": "UNESCO’s official Vietnamese edition covers opportunities and risks, human-centered use, ethics and privacy. Consult the relevant sections on verification, safety and responsible use.",
+          "access": "Read or download PDF",
+          "id": "unesco-genai-guidance-vn",
+          "publisher": "UNESCO · Fengchun Miao and Wayne Holmes · 2023"
+        },
+        {
+          "type": "Specialist report · PDF",
+          "description": "A report on AI in culture and creative industries, covering arts education, AI skills in arts curricula, creative work, cultural diversity, copyright and overreliance on automation.",
+          "access": "Download free PDF",
+          "id": "unesco-ai-culture-report"
+        },
+        {
+          "type": "Open access research article · PDF",
+          "description": "A scoping review of 57 studies on generative AI in visual arts, design, writing, literature and performance. Use it to discuss human judgment, prompting, evaluation and AI’s limits. Published online October 8, 2025, in volume 41 (2026).",
+          "access": "Read or download free PDF",
+          "id": "creative-genai-scoping-review"
+        },
+        {
+          "type": "Specialist guide · PDF",
+          "description": "WIPO principles and checklists for identifying intellectual property risks when using generative AI. Particularly relevant when using others’ reference images, voices, music or materials. For Vietnamese legal questions, seek advice that applies to Vietnam.",
+          "access": "Download free PDF",
+          "id": "wipo-genai-ip"
+        },
+        {
+          "type": "Practical video guide",
+          "description": "Learn to generate images from descriptions, refine prompts and edit the output. Use it for image creation, idea development and editing. Features can vary by account and plan.",
+          "access": "Watch guide",
+          "id": "adobe-firefly-image-tutorial"
+        },
+        {
+          "type": "Online user guide",
+          "title": "Generate Video FAQ: Text to Video and Image to Video",
+          "description": "FAQ on generating video from text or images. Make sure you have rights to uploaded images. Features may vary by region, account or plan.",
+          "access": "Read guide",
+          "id": "adobe-firefly-video-guide"
+        },
+        {
+          "type": "Online course · 7 lessons",
+          "description": "An introductory course on using AI to develop ideas, generate images, tell visual stories and interpret data. Suitable for independent study after class.",
+          "access": "Learn online",
+          "id": "canva-ai-skills-students"
+        },
+        {
+          "type": "Online user guide",
+          "description": "Explains ChatGPT data controls, including use of content to improve models and chat history. Use it to review privacy settings for ChatGPT specifically.",
+          "access": "Read guide",
+          "id": "openai-data-controls"
+        },
+        {
+          "type": "Handbook · PDF",
+          "title": "A Handbook for Educators on Using AI in Teaching and Education Management",
+          "description": "A 158-page handbook with six chapters on AI basics, prompting, responsible use, lesson design, digital media and professional development. An optional extended reference for teachers and education administrators.",
+          "access": "Read or download free PDF",
+          "id": "rmit-ai-handbook-educators-2026",
+          "publisher": "RMIT University Vietnam and the Department of Teachers and Education Administrators, Ministry of Education and Training · 2026"
+        }
+      ],
+      "support": [
+        {
+          "category": "Toolkit",
+          "title": "AI Practice Skills",
+          "description": "Workflows and skill sets for creating videos, images and other material with AI.",
+          "label": "Coming soon",
+          "id": "skills"
+        },
+        {
+          "category": "Prompts",
+          "title": "Practice Prompt Library",
+          "description": "Prompts for creating image sequences, keeping characters consistent, developing storyboards and telling visual stories.",
+          "label": "Coming soon",
+          "id": "prompts"
+        },
+        {
+          "category": "Guides",
+          "title": "In-depth Guides",
+          "description": "Step-by-step guides to practice independently and handle common situations.",
+          "label": "In preparation",
+          "id": "tutorials"
+        },
+        {
+          "category": "Contact",
+          "title": "Contact the Lecturer",
+          "description": "Ask about course content, practice exercises or materials via Zalo.",
+          "label": "Connect on Zalo",
+          "id": "consult"
+        }
+      ]
+    },
+    "advanced-communication": {
+      "title": "Advanced Communication Skills",
+      "shortTitle": "Advanced Communication",
+      "category": "Personal Skills",
+      "description": "Practice purposeful communication in study and work. Use realistic scenarios to develop listening, questioning, clear expression, feedback and skills for difficult conversations.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Listen to understand, speak to connect and work through problems together.",
+      "duration": "8 periods · 360 minutes",
+      "format": "2 in-person sessions",
+      "method": "Blended instruction with an emphasis on practice",
+      "classSize": "20–30 learners",
+      "audienceLabel": "For students and working professionals across disciplines",
+      "syllabus": {
+        "overview": "Learn to communicate with a clear purpose and adapt to the situation. Explore what affects a conversation and practice listening, confirming information, asking questions, structuring a message, giving feedback and handling disagreement. The course introduces enough theory to explain why an approach works in one situation and may be less effective in another. Most of the time is spent on pair and small-group practice, case analysis and feedback. The course is designed for 20 to 30 learners and runs for eight 45-minute periods over two in-person sessions.",
+        "objectives": [
+          "Analyze the purpose, participants, context and possible sources of misunderstanding in a conversation.",
+          "Listen actively, ask questions, summarize and confirm information.",
+          "Express a clear, focused message that suits the audience and channel.",
+          "Give constructive feedback and handle disagreements respectfully, keeping the discussion focused on the issue.",
+          "Assess your communication habits and identify what to practice next."
+        ],
+        "outcomes": [
+          "Prepare for a conversation with a clear purpose and expected outcome.",
+          "Ask questions and confirm information to reduce misunderstandings.",
+          "Express an opinion coherently and adjust your wording to the situation.",
+          "Give and receive feedback grounded in specific events, behaviors and impacts.",
+          "Complete a communication role-play and explain the choices you made."
+        ],
+        "sessions": [
+          {
+            "title": "Communication at work",
+            "focus": "Identify the purpose, participants, context, expectations and common sources of misunderstanding. Complete a baseline assessment.",
+            "output": "A situation analysis and a personal improvement goal.",
+            "number": 1
+          },
+          {
+            "title": "Active listening and confirmation",
+            "focus": "Hear the speaker out, reflect what they said, identify unclear points and confirm your understanding before responding.",
+            "output": "A practice round with speaker, listener and observer roles.",
+            "number": 2
+          },
+          {
+            "title": "Asking questions to clarify and explore",
+            "focus": "Distinguish open, clarifying, probing and confirming questions. Sequence them according to the goal.",
+            "output": "A set of questions that clarifies a specific request or need.",
+            "number": 3
+          },
+          {
+            "title": "Expressing and adapting a message",
+            "focus": "Organize the main ideas and adapt wording, tone and nonverbal cues to the audience. Rework a message for two settings.",
+            "output": "Two versions of the same message with a rationale for the changes.",
+            "number": 4
+          },
+          {
+            "title": "Giving and receiving constructive feedback",
+            "focus": "Describe the situation, observable behavior and impact. Practice giving feedback, asking follow-up questions and agreeing on changes.",
+            "output": "An evidence-based feedback exchange and an appropriate response.",
+            "number": 5
+          },
+          {
+            "title": "Managing disagreement and difficult conversations",
+            "focus": "Notice tension, stay focused on the issue, clarify concerns and find a practical next step.",
+            "output": "A difficult-conversation script and an agreement on what to do next.",
+            "number": 6
+          },
+          {
+            "title": "Email, messages and meetings",
+            "focus": "Choose the right channel, make a clear request, confirm decisions and record follow-up actions.",
+            "output": "An edited work email or message and a meeting follow-up template.",
+            "number": 7
+          },
+          {
+            "title": "Integrated practice and final assessment",
+            "focus": "Combine listening, questioning, clear expression, feedback and disagreement management in one scenario. Complete the final assessment.",
+            "output": "A role-play, observation form and individual practice plan.",
+            "number": 8
+          }
+        ],
+        "teachingApproach": [
+          "Introduce concepts and models briefly, then illustrate them with examples from study and work.",
+          "Practice in pairs or groups of three to five. Rotate roles so everyone speaks, listens and observes.",
+          "Focus feedback on observable behaviors such as how questions are asked, information is confirmed or the conversation is closed.",
+          "Progress from guided practice to scenarios with fewer hints. Assess your own work and choose one behavior to practice further."
+        ],
+        "assessment": [
+          {
+            "name": "Practical exercises",
+            "description": "Assess preparation, performance and how learners adjust their skills during in-class activities."
+          },
+          {
+            "name": "Mini-project",
+            "description": "Assess how learners analyze and handle an integrated communication scenario using the published rubric."
+          },
+          {
+            "name": "Participation",
+            "description": "Assess initiative, responsibility, cooperation and feedback to peers."
+          }
+        ],
+        "projectRubric": [
+          {
+            "name": "Context analysis and goal setting"
+          },
+          {
+            "name": "Listening, questioning and confirming information"
+          },
+          {
+            "name": "Clear expression, feedback and appropriate conduct"
+          },
+          {
+            "name": "Resolving the situation and agreeing on actions"
+          }
+        ]
+      },
+      "tracks": [
+        {
+          "short": "LEARNING",
+          "title": "Communication in Learning and Collaboration",
+          "subtitle": "Clarify requirements, exchange ideas and agree on responsibilities for shared learning or tasks.",
+          "task": "Handle a situation where members interpret a requirement differently or disagree on how to coordinate.",
+          "workflow": "Clarify the goal, listen to each person, ask questions, confirm understanding and agree on what’s next.",
+          "product": "A summary of the requirements and an agreement on how to coordinate.",
+          "tools": "Listening worksheet, question list and confirmation form.",
+          "image": "assets/images/communication-learning.webp"
+        },
+        {
+          "short": "WORK",
+          "title": "Communication at Work and in Service",
+          "subtitle": "Talk with colleagues, managers, customers or partners when coordination and feedback matter.",
+          "task": "Practice giving feedback on work quality or responding to a complaint.",
+          "workflow": "Identify what happened, listen, clarify expectations, respond and agree on a course of action.",
+          "product": "A conversation script and an agreed next step.",
+          "tools": "Feedback framework, scenarios and agreement log.",
+          "image": "assets/images/communication-work.webp"
+        },
+        {
+          "short": "DIGITAL",
+          "title": "Communication Online and Across Contexts",
+          "subtitle": "Choose the right channel, adapt the message and avoid misunderstandings in email, messages and online meetings.",
+          "task": "Rewrite an ambiguous message so it is clear and suitable for the situation.",
+          "workflow": "Identify the recipient, choose a channel, write the message, check the request and confirm the response.",
+          "product": "A well-structured email, message or meeting summary.",
+          "tools": "Email template, pre-send checklist and short minutes template.",
+          "image": "assets/images/communication-digital.webp"
+        }
+      ],
+      "references": [
+        {
+          "type": "Course syllabus · PDF",
+          "title": "Communication Skills Course Syllabus",
+          "description": "A public syllabus covering the communication process, verbal and nonverbal communication, listening, speaking, asking questions, praise and criticism, customer communication and intercultural communication.",
+          "access": "Open or download PDF",
+          "id": "huit-communication-outline",
+          "publisher": "Ho Chi Minh City University of Food Industry (HUFI, the name used in the document)"
+        },
+        {
+          "type": "Open textbook · PDF",
+          "description": "An open textbook on communication, listening, language, nonverbal cues, persuasion, public speaking, intercultural and group communication, and conflict. The book page offers a free PDF.",
+          "access": "Download free PDF",
+          "id": "communication-in-practice"
+        },
+        {
+          "type": "Open textbook · PDF",
+          "description": "An open textbook on interpersonal communication, perception, verbal and nonverbal communication, listening, relationships and small groups. Download the full book or individual chapters.",
+          "access": "Read or download",
+          "id": "touro-interpersonal-communication",
+          "publisher": "Gena Bardwell et al. · Open Touro · 2020"
+        }
+      ],
+      "support": [
+        {
+          "category": "Assessment",
+          "title": "Communication Skills Before and After the Course",
+          "description": "Use a self-assessment and an observed role-play to compare progress between the start and end of the course.",
+          "action": "Download assessment",
+          "label": "Available",
+          "id": "comm-1"
+        },
+        {
+          "category": "Workbook",
+          "title": "Eight-period Practice Workbook",
+          "description": "A summary of each period’s activities, practice instructions and space for notes after each session.",
+          "action": "Download workbook",
+          "label": "Available",
+          "id": "comm-2"
+        },
+        {
+          "category": "Scenarios",
+          "title": "Communication Practice Scenarios",
+          "description": "Ten scenarios for role-play, analysis and discussion in study, work and service settings.",
+          "action": "Download scenarios",
+          "label": "Available",
+          "id": "comm-3"
+        },
+        {
+          "category": "Tool",
+          "title": "Listening and Questioning Toolkit",
+          "description": "A framework for listening, reflecting, clarifying and confirming information before drawing conclusions.",
+          "action": "Download toolkit",
+          "label": "Available",
+          "id": "comm-4"
+        },
+        {
+          "category": "Practice",
+          "title": "Constructive Feedback and Difficult Conversations",
+          "description": "Prepare feedback, respond to suggestions and agree on the next step when disagreements arise.",
+          "action": "Download resource",
+          "label": "Available",
+          "id": "comm-5"
+        },
+        {
+          "category": "Tool",
+          "title": "Communication by Email, Messaging and Meetings",
+          "description": "Includes a channel selection chart, email template, status update message and way to confirm meeting outcomes.",
+          "action": "Download guide",
+          "label": "Available",
+          "id": "comm-6"
+        },
+        {
+          "category": "Assessment",
+          "title": "Mini-project and Assessment Criteria",
+          "description": "An integrated practice assignment, required deliverables and the published rubric.",
+          "action": "Download assignment",
+          "label": "Available",
+          "id": "comm-7"
+        },
+        {
+          "category": "Independent study",
+          "title": "14-Day Communication Practice Plan",
+          "description": "A short practice schedule for applying course skills in real situations.",
+          "action": "Download plan",
+          "label": "Available",
+          "id": "comm-8"
+        },
+        {
+          "category": "Consultation",
+          "title": "Contact the Lecturer",
+          "description": "Discuss communication scenarios, applying the skills or areas where you need more guidance via Zalo.",
+          "label": "Connect on Zalo",
+          "id": "consult"
+        }
+      ],
+      "tracksTitle": "Applying the Skills in Different Settings",
+      "tracksIntro": "Practice the same core skills in study, work, service and digital communication."
+    },
+    "teamwork": {
+      "title": "Teamwork Skills",
+      "shortTitle": "Teamwork",
+      "category": "Collaboration Skills",
+      "description": "Learn to coordinate work as a team. Practice agreeing on goals, assigning responsibilities, planning, tracking progress, making decisions and resolving disagreements through practical tasks.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Agree on the goal, clarify responsibilities and coordinate the work.",
+      "duration": "8 periods · 360 minutes",
+      "format": "2 in-person sessions",
+      "method": "Blended instruction with team practice",
+      "classSize": "20–30 learners",
+      "audienceLabel": "For students and working professionals across disciplines",
+      "syllabus": {
+        "overview": "Learn to coordinate work toward a shared goal. Explore what makes teams effective and practice setting objectives, defining roles, assigning responsibilities, planning, tracking progress, running meetings, making decisions and handling disagreement. The course introduces group processes and individual accountability, with most of the time spent on collaborative tasks, simulations and feedback. It is designed for 20 to 30 learners working in groups of four to five, with eight 45-minute periods over two in-person sessions.",
+        "objectives": [
+          "Explain the main factors that influence team effectiveness.",
+          "Set a shared goal, define the scope and agree on how to work together.",
+          "Assign roles and responsibilities and plan how to track progress.",
+          "Participate in meetings, share information, make decisions and manage disagreement.",
+          "Evaluate the team’s results and your contribution to identify areas for improvement."
+        ],
+        "outcomes": [
+          "Define the goal and deliverable for a team task.",
+          "Create a work plan that shows who is responsible, the deadlines and the expected outputs.",
+          "Use a tool to track progress and record decisions.",
+          "Help resolve problems and disagreements using evidence, criteria and shared goals.",
+          "Complete a team task and review how the team worked."
+        ],
+        "sessions": [
+          {
+            "title": "From a group to an effective team",
+            "focus": "Distinguish a group of participants from a team with shared goals, interdependent work and accountability. Complete a baseline assessment.",
+            "output": "An assessment of a team you’ve worked in, with strengths and areas for improvement.",
+            "number": 1
+          },
+          {
+            "title": "Goals and working agreements",
+            "focus": "Define deliverables, scope, completion criteria, working rules and how to handle changes.",
+            "output": "A team agreement with specific goals and rules.",
+            "number": 2
+          },
+          {
+            "title": "Roles, responsibilities and assignments",
+            "focus": "Identify who does the work, who is accountable, who contributes and who needs updates. Check for overlap and gaps.",
+            "output": "An assignment chart with owners, deliverables and deadlines.",
+            "number": 3
+          },
+          {
+            "title": "Planning and tracking progress",
+            "focus": "Break down tasks, identify dependencies and checkpoints, and plan for delays.",
+            "output": "A progress tracker with status, risks and next actions.",
+            "number": 4
+          },
+          {
+            "title": "Team meetings and updates",
+            "focus": "Prepare an agenda, facilitate discussion, record decisions and turn conclusions into action items.",
+            "output": "An agenda, short minutes and an action list.",
+            "number": 5
+          },
+          {
+            "title": "Decision-making and problem solving",
+            "focus": "Clarify the problem, set criteria, compare options and choose a decision method suited to the team’s time and responsibilities.",
+            "output": "An options comparison and a reasoned decision.",
+            "number": 6
+          },
+          {
+            "title": "Conflict and member accountability",
+            "focus": "Identify the source of disagreement, discuss facts, give constructive feedback and restore coordination.",
+            "output": "An agreement on how to handle the situation and updated working rules.",
+            "number": 7
+          },
+          {
+            "title": "Mini-project and team retrospective",
+            "focus": "Use shared goals, assignments, planning, coordination and decision-making to complete a team task. Complete the final assessment.",
+            "output": "A team deliverable, progress tracker, peer assessment and retrospective.",
+            "number": 8
+          }
+        ],
+        "teachingApproach": [
+          "Introduce concepts and models through project, operations, learning and community examples.",
+          "Work in teams of four to five. Rotate facilitation, note-taking, timekeeping and critical review.",
+          "Set a goal, deadline and deliverable for each task. Use assignment charts and tracking tools to monitor progress.",
+          "The lecturer observes both the deliverable and the team process. Learners complete self- and peer assessments after the task."
+        ],
+        "assessment": [
+          {
+            "name": "Practical exercises",
+            "description": "Assess goal setting, task assignment and coordination in class."
+          },
+          {
+            "name": "Mini-project",
+            "description": "Assess the team deliverable and how the team worked using the published rubric."
+          },
+          {
+            "name": "Participation",
+            "description": "Assess accountability, engagement, information sharing and support for other members."
+          }
+        ],
+        "projectRubric": [
+          {
+            "name": "Goals and implementation plan"
+          },
+          {
+            "name": "Assignments and member accountability"
+          },
+          {
+            "name": "Coordination, decision-making and handling disagreement"
+          },
+          {
+            "name": "Deliverables and retrospective"
+          }
+        ]
+      },
+      "tracks": [
+        {
+          "short": "PROJECT TEAMS",
+          "title": "Project and Work Teams",
+          "subtitle": "Coordinate interdependent tasks, deadlines and deliverables.",
+          "task": "Organize a task with several workstreams, participants and a shared deadline.",
+          "workflow": "Set the goal, break down work, assign it, track progress, manage changes and hand over the result.",
+          "product": "A plan, assignment chart and deliverable that meets agreed criteria.",
+          "tools": "Team agreement template, task tracker and decision log.",
+          "image": "assets/images/teamwork-project.webp"
+        },
+        {
+          "short": "OPERATIONS TEAMS",
+          "title": "Service and Operations Teams",
+          "subtitle": "Keep information flowing across roles so work can continue without interruption.",
+          "task": "Address an incomplete handoff or a delay that affects downstream work.",
+          "workflow": "Map the workflow, identify handoffs, agree on owners, update status and verify results.",
+          "product": "A coordination diagram and handoff rules.",
+          "tools": "Assignment chart, handoff checklist and progress update rules.",
+          "image": "assets/images/teamwork-operations.webp"
+        },
+        {
+          "short": "COMMUNITY TEAMS",
+          "title": "Creative and Community Teams",
+          "subtitle": "Bring together different perspectives, encourage ideas and agree on a shared approach.",
+          "task": "Develop an activity or idea with limited time and resources.",
+          "workflow": "Collect ideas, agree on criteria, choose an option, assign roles, test and evaluate.",
+          "product": "A selected idea, implementation plan and task assignments.",
+          "tools": "Idea board, selection criteria and retrospective form.",
+          "image": "assets/images/teamwork-community.webp"
+        }
+      ],
+      "references": [
+        {
+          "type": "Lecture notes · PDF",
+          "title": "Presentation and Teamwork Skills",
+          "description": "Includes a chapter on teamwork, shared goals, stages of team development, roles, work assignments and conflict resolution.",
+          "access": "Download PDF",
+          "id": "ufm-teamwork-text",
+          "publisher": "Soft Skills Department · University of Finance and Marketing · 2020"
+        },
+        {
+          "type": "Course syllabus · PDF",
+          "title": "Detailed Syllabus for Teamwork Skills",
+          "description": "A two-credit course outline with theory and practice. Topics include team formation, goal setting, planning, organizing, leading, monitoring and online teamwork.",
+          "access": "Open or download PDF",
+          "id": "iuh-teamwork-outline",
+          "publisher": "Industrial University of Ho Chi Minh City · 2018"
+        },
+        {
+          "type": "Free course · Online material",
+          "description": "A free course on forming teams, roles, development stages, goals, assignments, conflict and evaluation. Read online or download Word, PDF or EPUB for offline study.",
+          "access": "Study or download",
+          "id": "openlearn-working-teams"
+        },
+        {
+          "type": "Practical guide",
+          "description": "Guidance on communication, accountability, feedback, decisions, conflict and self-assessment in group work.",
+          "access": "Read guide",
+          "id": "uwaterloo-teamwork"
+        },
+        {
+          "type": "Practical guide",
+          "description": "Prepare, facilitate and close a team meeting. Covers roles, agendas, decision records and action items.",
+          "access": "Read guide",
+          "id": "uwaterloo-meetings"
+        },
+        {
+          "type": "Assessment guide",
+          "description": "Assess group deliverables and teamwork using lecturer observation, self-assessment and peer assessment.",
+          "access": "Read guide",
+          "id": "uwaterloo-assessment"
+        }
+      ],
+      "support": [
+        {
+          "category": "Assessment",
+          "title": "Teamwork Skills Before and After the Course",
+          "description": "A self-assessment and short group task to compare how learners coordinate before and after the course.",
+          "action": "Download assessment",
+          "label": "Available",
+          "id": "team-1"
+        },
+        {
+          "category": "Workbook",
+          "title": "Eight-period Practice Workbook",
+          "description": "Activities for each period, guidance on organizing teams and a reflection form for each activity.",
+          "action": "Download workbook",
+          "label": "Available",
+          "id": "team-2"
+        },
+        {
+          "category": "Organization tool",
+          "title": "Team Working Agreement Template",
+          "description": "Agree on goals, scope, roles, working rules and how to handle problems.",
+          "action": "Download template",
+          "label": "Available",
+          "id": "team-3"
+        },
+        {
+          "category": "Management tool",
+          "title": "Task Assignment and Progress Tracker",
+          "description": "Track tasks, owners, deadlines, statuses and decisions.",
+          "action": "Download tracker",
+          "label": "Available",
+          "id": "team-4"
+        },
+        {
+          "category": "Scenarios",
+          "title": "Teamwork Practice Scenarios",
+          "description": "Ten scenarios on goals, assignments, delays, disagreements, handoffs and post-project evaluation.",
+          "action": "Download scenarios",
+          "label": "Available",
+          "id": "team-5"
+        },
+        {
+          "category": "Coordination tool",
+          "title": "Meetings, Decisions and Handoffs",
+          "description": "Includes a meeting agenda, guidance on recording decisions and a handoff checklist.",
+          "action": "Download guide",
+          "label": "Available",
+          "id": "team-6"
+        },
+        {
+          "category": "Assessment",
+          "title": "Mini-project and Assessment Criteria",
+          "description": "The team assignment, expected deliverables and rubric for both results and teamwork.",
+          "action": "Download assignment",
+          "label": "Available",
+          "id": "team-7"
+        },
+        {
+          "category": "Assessment",
+          "title": "Peer Assessment and Team Retrospective",
+          "description": "Record contributions, reflect on how the team worked and agree on improvements.",
+          "action": "Download forms",
+          "label": "Available",
+          "id": "team-8"
+        },
+        {
+          "category": "Independent study",
+          "title": "14-Day Teamwork Improvement Plan",
+          "description": "A practice schedule to help the team maintain its working agreements after the course.",
+          "action": "Download plan",
+          "label": "Available",
+          "id": "team-9"
+        },
+        {
+          "category": "Consultation",
+          "title": "Contact the Lecturer",
+          "description": "Discuss team organization, assignments, coordination and real situations via Zalo.",
+          "label": "Connect on Zalo",
+          "id": "consult"
+        }
+      ],
+      "tracksTitle": "Applying Teamwork in Different Settings",
+      "tracksIntro": "Practice teamwork in projects, operations, study groups and community activities."
+    },
+    "presentation-negotiation": {
+      "title": "Presentation and Business Negotiation Skills",
+      "shortTitle": "Presentation and Business Negotiation",
+      "category": "Professional Skills",
+      "description": "Learn to prepare a message, present it to an audience and navigate business negotiations.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Present persuasively and negotiate effectively",
+      "duration": "Coming soon",
+      "format": "Training and courses",
+      "method": "Content will open later",
+      "lockedMessage": "Contact the administrator to request access."
+    },
+    "critical-thinking": {
+      "title": "Critical Thinking and Problem Solving",
+      "shortTitle": "Critical Thinking and Problem Solving",
+      "category": "Thinking and Problem Solving",
+      "description": "Analyze arguments, identify problems, evaluate options and make decisions.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Think critically and focus on the right problem",
+      "duration": "Coming soon",
+      "format": "Training and courses",
+      "method": "Content will open later",
+      "lockedMessage": "Contact the administrator to request access."
+    },
+    "effective-learning-entrepreneurship": {
+      "title": "Effective Learning and Innovative Entrepreneurship",
+      "shortTitle": "Learning and Entrepreneurship",
+      "category": "Learning and Career Development",
+      "description": "Practice independent learning, time management and focus. Then work with a team to investigate a real problem, build a prototype and revise your idea based on feedback.",
+      "lectureAccess": {
+        "title": "Lectures for enrolled learners",
+        "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
+        "action": "Contact the lecturer"
+      },
+      "subtitle": "Find a study routine that works for you and try solving a problem in your field.",
+      "duration": "8 periods (360 minutes)",
+      "format": "2 in-person sessions",
+      "method": "Discussion and practical exercises",
+      "classSize": "20 to 30 learners",
+      "audienceLabel": "For vocational and college students",
+      "syllabus": {
+        "overview": "In the first session, you’ll try ways to study and review material independently, then choose an approach that fits your schedule. In the second session, you’ll work with a team to investigate a problem in your field, build a prototype and revise it after receiving feedback.\\\n\\\nThe course consists of eight 45-minute periods over two sessions. Each session includes 180 minutes of instruction, excluding breaks. Classes have 20 to 30 learners, working in teams of four to six.\\\n\\\nThe classroom test helps your team decide what to revise and investigate next. To see whether the solution meets a real need, test it further with the people who would use it. After the course, you can use your personal plan to track and maintain the study routine you chose.",
+        "objectives": [
+          "Set your own learning goals, monitor progress and adjust how you study.",
+          "Choose evidence-based study methods and verify information when using AI.",
+          "Identify a workplace problem, assess the resources available and test a way to address it."
+        ],
+        "outcomes": [
+          "Create a study plan with milestones at 30, 60 and 90 days, including deliverables and how you’ll track them.",
+          "Recall material from memory, check it against the source, correct errors and schedule review.",
+          "Describe a problem and distinguish observations from assumptions.",
+          "Write a value proposition, build a prototype and plan a test of one assumption.",
+          "Explain what the available evidence shows and decide what to revise next."
+        ],
+        "sessions": [
+          {
+            "title": "Taking charge of your learning",
+            "focus": "Distinguish learning to remember, learning to do and learning to create value. Review how you study and choose one thing to improve.",
+            "output": "A baseline self-assessment and one priority goal.",
+            "number": 1
+          },
+          {
+            "title": "Setting goals and staying focused",
+            "focus": "Choose a deliverable, make a realistic schedule and plan for distractions or schedule changes.",
+            "output": "A plan with 30-, 60- and 90-day milestones and a weekly study schedule.",
+            "number": 2
+          },
+          {
+            "title": "Retrieval practice and spaced review",
+            "focus": "Recall material without looking, then check and correct your answers. Schedule review and choose methods that fit the task.",
+            "output": "A corrected self-test and revised review schedule.",
+            "number": 3
+          },
+          {
+            "title": "Adjusting your study routine and using AI",
+            "focus": "Plan, try and record what you would change. Use AI to suggest questions and verify answers against sources, or do the exercise without AI.",
+            "output": "A verification log and a plan to repeat the task independently.",
+            "number": 4
+          },
+          {
+            "title": "Entrepreneurial thinking and value creation",
+            "focus": "Compare starting a business with improving work inside an organization. Look for opportunities to use technology, reduce waste or meet a community need.",
+            "output": "Three identified problems and one opportunity the team chooses to explore.",
+            "number": 5
+          },
+          {
+            "title": "Learning from users",
+            "focus": "Ask users about something they have done. Use real data or a simulation to distinguish evidence from assumptions.",
+            "output": "A problem statement and interview notes that identify their sources.",
+            "number": 6
+          },
+          {
+            "title": "Prototyping and testing a solution",
+            "focus": "Explain the benefit to users, identify resources and build a simple prototype. Agree on criteria before testing one assumption.",
+            "output": "A prototype and a record of the first test.",
+            "number": 7
+          },
+          {
+            "title": "Presenting results and planning next steps",
+            "focus": "Present your observations and revisions. Review your contribution, complete the final assessment and decide what to test next.",
+            "output": "A mini-project, individual plan and final assessment.",
+            "number": 8
+          }
+        ],
+        "teachingApproach": [
+          "Each period starts with a short explanation and an example. Then you try the task, receive feedback and revise in class.",
+          "Choose a situation from your field, such as a technical trade, service, arts and culture or community work.",
+          "If you meet users between sessions, ask permission before recording information. For simulations, identify your source and plan a follow-up test with actual users.",
+          "You can work on paper. AI is optional."
+        ],
+        "assessment": [
+          {
+            "name": "Practical exercises",
+            "description": "Four exercises worth five points each: set a goal, recall material and correct errors, analyze a problem, and prepare interview questions."
+          },
+          {
+            "name": "Mini-project",
+            "description": "The team deliverable is worth up to 40 points under the rubric. Each person’s explanation and contribution are worth up to 10 points."
+          },
+          {
+            "name": "Individual plan and reflection",
+            "description": "Each piece is worth five points. Cover goals, schedule, study methods, how you’ll track and adjust your plan, and reflection on how you learn."
+          },
+          {
+            "name": "Participation and contribution",
+            "description": "Up to three points for preparation, four for cooperation and three for specific feedback. You may respond in writing."
+          }
+        ],
+        "projectRubric": [
+          {
+            "name": "Problem and users"
+          },
+          {
+            "name": "Evidence and limitations"
+          },
+          {
+            "name": "Prototype and test design"
+          },
+          {
+            "name": "Conclusions and revisions"
+          }
+        ]
+      },
+      "tracks": [
+        {
+          "short": "TECHNICAL TRADES",
+          "title": "Improving a Workshop Task",
+          "subtitle": "Reduce tool mix-ups or clarify instructions in a training workshop.",
+          "task": "Observe how tools are collected and returned. Pick one cause you can check.",
+          "workflow": "Ask regular tool users, sketch a different layout and test it under safe conditions.",
+          "product": "A problem statement, prototype layout and notes on what to revise.",
+          "tools": "Use the observation, interview and test templates under Learner Support.",
+          "image": "assets/images/course06-technical.webp"
+        },
+        {
+          "short": "ARTS AND CULTURE",
+          "title": "Organizing Creative Activities",
+          "subtitle": "Improve rehearsal, props preparation or the audience experience.",
+          "task": "Identify a problem and talk to someone who experiences it directly.",
+          "workflow": "Try a different way to share schedules, label props or guide the audience. Revise it after feedback.",
+          "product": "A problem statement, prototype and notes on what you learned from feedback.",
+          "tools": "Use the observation, interview and test templates under Learner Support.",
+          "image": "assets/images/course06-arts.webp"
+        },
+        {
+          "short": "SERVICE AND COMMUNITY",
+          "title": "Improving an Everyday Service",
+          "subtitle": "Reduce waiting time, help people find information or reduce waste.",
+          "task": "Observe one use of the service and choose an assumption to test.",
+          "workflow": "Talk to users, build a simple prototype such as a sign, and watch them try it.",
+          "product": "A problem statement, prototype and proposal for the next test.",
+          "tools": "Use the observation, interview and test templates under Learner Support.",
+          "image": "assets/images/course06-community.webp"
+        }
+      ],
+      "references": [
+        {
+          "type": "Research review",
+          "description": "Reviews how retrieval practice and spaced review make learning more effective. Access to the article may be restricted.",
+          "access": "Open resource",
+          "id": "retrieval-science",
+          "publisher": "Carpenter et al., Nature Reviews Psychology (2022)"
+        },
+        {
+          "type": "Practical guide · PDF",
+          "title": "Retrieval Practice Guide",
+          "description": "Test yourself after studying, check your answers and correct errors.",
+          "access": "Open resource",
+          "id": "retrieval-guide"
+        },
+        {
+          "type": "Practical guide · PDF",
+          "title": "Spaced Review Guide",
+          "description": "Spread review across several sessions instead of doing it all at once.",
+          "access": "Open resource",
+          "id": "spacing-guide"
+        },
+        {
+          "type": "Competency framework",
+          "title": "EntreComp Entrepreneurship Competence Framework",
+          "description": "A framework published in 2016 with 15 competencies across three areas.",
+          "access": "Open resource",
+          "id": "entrecomp",
+          "publisher": "Joint Research Centre, European Commission (2016)"
+        },
+        {
+          "type": "Educator guide",
+          "description": "Guidance for vocational institutions on organizing entrepreneurial learning activities.",
+          "access": "Open resource",
+          "id": "tvet"
+        },
+        {
+          "type": "Practical toolkit",
+          "title": "Design Kit and Human-Centered Design Methods",
+          "description": "Choose interviewing, prototyping and feedback methods that fit the project’s goals.",
+          "access": "Open resource",
+          "id": "designkit"
+        },
+        {
+          "type": "Guide",
+          "title": "Guidance for Generative AI in Education and Research",
+          "description": "Principles for responsible use in teaching and research, with learners and educators at the center.",
+          "access": "Open resource",
+          "id": "genai"
+        }
+      ],
+      "support": [
+        {
+          "category": "Assessment",
+          "title": "Learning Skills Self-Assessment",
+          "description": "Complete the form before the course to choose one habit to improve. Repeat after 14 days and review your work. The exercise at the end of session two shows what you can do so far. This classroom tool has not been validated as a measurement scale.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-1"
+        },
+        {
+          "category": "Practice tool",
+          "title": "30-, 60- and 90-Day Learning Plan",
+          "description": "Pick a skill relevant to your field and realistic for your schedule. For design, one 30-day goal could be to make an event poster independently, at the right size, with all the details and text readable on a phone.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-2"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Effective Learning Methods Toolkit",
+          "description": "After studying a short section, close the material and recall three key points, solve a problem or repeat a task. Reopen the material to find and fix errors. Familiarity when rereading can differ from what you can do independently. This review can be ungraded.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-3"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Time Management and Focus Workbook",
+          "description": "For two days, log study, paid work, travel, rest and social media. Find a regular time for study. Account for family responsibilities, equipment and your study space.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-4"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Independent Learning and Verifying AI Output",
+          "description": "Before asking AI, write down what you understand and where you’re stuck. Use AI to suggest questions, explain a point or review a draft, then check the output against your materials. Close the chat and try a similar task independently.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-5"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Problem and Opportunity Worksheet",
+          "description": "Observe a situation in your field and record what happened, when, who was affected and how. “Students need an app” already proposes a solution. Start with something you can check, such as newcomers missing rehearsals because notices are spread across group chats.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-6"
+        },
+        {
+          "category": "Practice tool",
+          "title": "User Interview Questions",
+          "description": "Choose someone who has experienced the situation. Explain the purpose, ask permission and let them stop at any time. Record only what you need, use codes instead of names and ask separately before recording or taking photos. Assign an interviewer and a note-taker.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-7"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Value Proposition and Idea Template",
+          "description": "Describe your users, their task, your solution and what it improves over their current approach. A backstage team that wants fewer prop mix-ups might test a location chart before building an app.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-8"
+        },
+        {
+          "category": "Practice tool",
+          "title": "Guide to Prototyping and Testing a Solution",
+          "description": "Decide what you want to learn before choosing a prototype such as a screen sketch, service script or paper model. Observe how users understand and use it. An MVP is the simplest version that can deliver value and support learning from real use. A poster can help test a message.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-9"
+        },
+        {
+          "category": "Assessment",
+          "title": "Mini-project and Assessment Criteria",
+          "description": "Teams of four to six choose a problem in their field, build a prototype and test one assumption. Submit a one-page analysis, evidence log, prototype and proposed revisions. Each person submits a 90-day learning plan and a short account of their contribution.",
+          "action": "Download PDF",
+          "label": "Available",
+          "id": "learn-10"
+        },
+        {
+          "category": "Consultation",
+          "title": "Contact the Lecturer",
+          "description": "Ask the lecturer about your learning plan or discuss issues that come up during the project.",
+          "label": "Connect on Zalo",
+          "id": "consult"
+        }
+      ],
+      "tracksTitle": "Practice in Your Field",
+      "tracksIntro": "Choose a problem from your field that you can begin to address with the resources your team has."
+    }
+  }
+}
