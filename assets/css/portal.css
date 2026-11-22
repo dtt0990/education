@@ -442,3 +442,38 @@ body{background:radial-gradient(ellipse at 0 12%,#dcebe7 0,transparent 38%),radi
 @media print{.course-section-picker{display:none!important}}
 
 @media screen and (min-width:1101px){.home-course-grid.six-course-grid .course-card:first-child{grid-column:auto}}
+
+.locale-toggle {
+  flex: none;
+  order: 2;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 8px;
+  border: 1px solid #c5d7e1;
+  border-radius: 12px;
+  background: linear-gradient(#fff, #e9f2f6);
+  color: #12354a;
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.locale-toggle:disabled { cursor: wait; }
+.locale-status:empty { display: none; }
+.locale-status:not(:empty) {
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  max-width: calc(100vw - 24px);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #fff;
+  color: #12354a;
+  box-shadow: 0 4px 18px #10263826;
+}
+.resource-original-language { display: block; margin-top: .5rem; font-size: .875rem; }
+@media (max-width:780px) {
+  .locale-toggle { order: 0; }
+  .nav-toggle { order: 1; flex-shrink: 0; }
+  .header-inner .brand { flex-shrink: 1; }
+}
