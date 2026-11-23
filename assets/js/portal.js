@@ -393,8 +393,7 @@ function syllabusHTML(c) {
 }
 function slidesHTML(c) {
   if (c.lectureAccess?.mode === 'enrolled_only') {
-    const access = c.lectureAccess;
-    return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','classMaterials','HỌC LIỆU THEO LỚP'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1></div><section class="content-card lecture-access-notice"><div class="locked-icon">${icon('lock')}</div><h2>${esc(access.title)}</h2><p>${esc(access.message)}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(access.action)} ${icon('arrow')}</a></section>`;
+    return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','classMaterials','HỌC LIỆU THEO LỚP'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1></div>` + classMaterialNotice(c, 'slides');
   }
   const slides = c.slides || [];
   if (!slides.length) return `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','learningMaterialsEyebrow','LEARNING MATERIALS'))}</span><h1>${esc(C('course','slides','Nội dung bài giảng'))}</h1><p>${esc(C('course','slidesIntro','Slide và tài liệu giảng dạy được cập nhật theo từng buổi học.'))}</p></div><div class="empty-state"><div class="empty-state-icon">${icon('slides')}</div><h2>${esc(C('course','emptySlidesTitle','Bài giảng sẽ được cập nhật'))}</h2><p>${esc(C('course','emptySlidesText','Slide của môn học sẽ được đăng tải tại đây sau khi giảng viên hoàn thiện và sắp xếp theo từng buổi.'))}</p></div>`;
@@ -411,14 +410,72 @@ function referencesHTML(c) {
   const types = [...new Set(items.map(x=>x.type).filter(Boolean))];
   return intro + `<div class="resource-toolbar"><select id="langFilter" class="filter-select" aria-label="${locale === 'en' ? 'Filter by resource language' : 'Lọc theo ngôn ngữ tài liệu'}"><option value="all">${esc(C('course','allLanguages','Tất cả ngôn ngữ'))}</option><option value="Tiếng Việt">${esc(C('course','vietnamese','Tiếng Việt'))}</option><option value="English">${esc(C('course','english','English'))}</option></select><select id="typeFilter" class="filter-select" aria-label="${locale === 'en' ? 'Filter by resource type' : 'Lọc theo loại tài liệu'}"><option value="all">${esc(C('course','filterType','Tất cả loại tài liệu'))}</option>${types.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join('')}</select></div><p class="resource-filter-status" role="status"></p><div class="resource-grid" id="resourceGrid">${items.map(resourceCard).join('')}</div>`;
 }
+const classMaterialFolders = {
+  "ai-tech": [
+    {
+      "code": "AI-01",
+      "slides": "1cKxnHpGzqe81JxucsHupVPyG23g8sicd",
+      "support": "1cW2qxyItzv5aq1PY5BidUvC_3pr_eGeo"
+    }
+  ],
+  "advanced-communication": [
+    {
+      "code": "COMM-01",
+      "slides": "1_oUSX9WRXSsJt3WTrHyZF0hbtV_wdBlI",
+      "support": "1fuwMBgnERwPqLr9UVHPr6pbqSJZVTLvi"
+    }
+  ],
+  "presentation-negotiation": [
+    {
+      "code": "PRES-01",
+      "slides": "1adtI4dxkJV2EuI1a_3ncWMZBlXln5tRS",
+      "support": "18UiWZvfnmcI2ZTpkporlbTKQTGQY-4aU"
+    }
+  ],
+  "critical-thinking": [
+    {
+      "code": "CRIT-01",
+      "slides": "17nJcB6lv1O_AHRao6JTFT-KHv5zI_DQY",
+      "support": "1VCKKke518tNV7hPRp9MhNQ6Hp0YbEGnU"
+    }
+  ],
+  "effective-learning-entrepreneurship": [
+    {
+      "code": "LEARN-01",
+      "slides": "1fLtx-itgAJ65AkY3yyxQVQtPDc050Ht0",
+      "support": "19VRUM9NyOA5fkuJt55Gc5_KU3vKr8Chu"
+    }
+  ],
+  "teamwork": [
+    {
+      "code": "TEAM-PILOT",
+      "slides": "140nGjR1xFefs5lL24MlmrP9KH2uNYPDJ",
+      "support": "1t8hVFnTqgTlxtAma0Y7CflBlUfHhjOpc"
+    }
+  ]
+};
+
+function classMaterialNotice(course, section) {
+  const english = locale === 'en';
+  const classes = classMaterialFolders[course.id] || [];
+  const links = classes.filter(group => /^[A-Za-z0-9_-]+$/.test(group[section] || ''));
+  return `<section class="content-card lecture-access-notice"><div class="locked-icon">${icon('lock')}</div>
+    <h2>${english ? 'Learning materials for enrolled learners' : 'Tài liệu dành cho học viên tham gia khóa học'}</h2>
+    <p>${english ? 'Use the Google Account you registered with the lecturer. If Google asks for your password, check that the sign-in page is accounts.google.com.' : 'Dùng tài khoản Google đã đăng ký với giảng viên. Nếu cần nhập mật khẩu, hãy kiểm tra trang đăng nhập là accounts.google.com.'}</p>
+    ${links.length ? links.map(group => `<p><a class="btn" href="https://drive.google.com/drive/folders/${group[section]}" target="_blank" rel="noopener noreferrer">${english ? 'Sign in to open materials' : 'Đăng nhập để mở học liệu'} · ${esc(group.code)} ${icon('arrow')}</a></p>`).join('') : `<p>${english ? 'Contact the lecturer for your class link.' : 'Liên hệ giảng viên để nhận đường dẫn học liệu của lớp.'}</p>`}
+    <a class="btn" href="${routeHref('lien-he.html')}">${esc(C('navigation','contact','Liên hệ'))}</a>
+  </section>`;
+}
 function supportHTML(c) {
   const items = c.support || [], contact = DB.portal.contact || {};
   const intro = `<div class="section-page-intro"><span class="eyebrow">${esc(C('labels','learnerSupportEyebrow','LEARNER SUPPORT'))}</span><h1>${esc(C('course','support','Hỗ trợ học viên'))}</h1><p>${esc(C('course','supportIntro','Công cụ, hướng dẫn thực hành và kênh trao đổi với giảng viên.'))}</p></div>`;
-  if (!items.length) return intro + `<div class="empty-state"><div class="empty-state-icon">${icon('support')}</div><h2>${esc(C('course','emptySupportTitle','Nội dung hỗ trợ đang được cập nhật'))}</h2></div>`;
-  return intro + `<div class="support-grid">${items.map(x=>{
-    const link = x.url || (x.id === 'consult' ? contact.zaloUrl : '');
-    const action = link ? `<a class="support-action" href="${esc(asset(link))}" ${link.startsWith('assets/resources/')?`download="${esc(link.split('/').pop())}"`: ''} target="_blank" rel="noopener">${esc(x.id==='consult'?C('course','consult','Kết nối Zalo với giảng viên'):(x.action || C('course','defaultSupportAction','Mở nội dung')))} ${icon('arrow')}</a>` : `<span class="support-status">${esc(x.label || C('course','defaultSupportStatus','Đang cập nhật'))}</span>`;
-    return `<article class="support-card"><div class="support-icon">${icon(x.id==='consult'?'contact':x.id==='prompts'?'image':x.id==='tutorials'?'book':'support')}</div><div class="support-copy"><span class="support-category">${esc(x.category || '')}</span><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p>${action}${locale === 'en' && link.startsWith('assets/resources/') ? `<small class="resource-original-language">${esc(C('labels','originalVietnamese','Document in Vietnamese'))}</small>` : ''}</div></article>`;
+  if (!items.length) return intro + classMaterialNotice(c, 'support') + `<div class="empty-state"><div class="empty-state-icon">${icon('support')}</div><h2>${esc(C('course','emptySupportTitle','Nội dung hỗ trợ đang được cập nhật'))}</h2></div>`;
+  return intro + classMaterialNotice(c, 'support') + `<div class="support-grid">${items.map(x=>{
+    const link = x.id === 'consult' ? contact.zaloUrl : '';
+    const action = link
+      ? `<a class="support-action" href="${esc(asset(link))}" target="_blank" rel="noopener">${esc(C('course','consult','Kết nối Zalo với giảng viên'))} ${icon('arrow')}</a>`
+      : `<span class="support-status">${locale === 'en' ? 'Contact the lecturer' : 'Liên hệ giảng viên'}</span>`;
+    return `<article class="support-card"><div class="support-icon">${icon(x.id==='consult'?'contact':x.id==='prompts'?'image':x.id==='tutorials'?'book':'support')}</div><div class="support-copy"><span class="support-category">${esc(x.category || '')}</span><h3>${esc(x.title)}</h3><p>${esc(x.description || '')}</p>${action}</div></article>`;
   }).join('')}</div>`;
 }
 function setupResourceFilters() {
@@ -466,7 +523,7 @@ function renderCourse() {
   }
   document.title = `${c.title} | ${DB.portal.name}`;
   if (c.status !== 'open') {
-    target.innerHTML = `<div class="container page-pad">${courseBreadcrumb(c)}<section class="locked-panel"><div class="locked-icon">${icon('lock')}</div><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><h1>${esc(c.title)}</h1><p>${esc(c.lockedMessage || C('course','lockedMessage','Nội dung hiện đang tạm khóa, liên hệ quản trị viên để mở.'))}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(C('navigation','connect','Kết nối Zalo'))} ${icon('arrow')}</a><a class="back-link" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></section></div>`;
+    target.innerHTML = `<div class="container page-pad">${courseBreadcrumb(c)}<section class="locked-panel"><div class="locked-icon">${icon('lock')}</div><span class="eyebrow">${esc(C('labels','coursePrefixUpper','MÔN'))} ${esc(c.number)}</span><h1>${esc(c.title)}</h1><p>${esc(c.lockedMessage || C('course','lockedMessage','Nội dung hiện đang tạm khóa, liên hệ quản trị viên để mở.'))}</p><a class="btn" href="${routeHref('lien-he.html')}">${esc(C('navigation','connect','Kết nối Zalo'))} ${icon('arrow')}</a><a class="back-link" href="${routeHref('chuong-trinh.html')}">← ${esc(C('course','backToCatalog','Quay lại chương trình học'))}</a></section>${['slides', 'support'].includes(section) ? classMaterialNotice(c, section) : `<p><a href="${courseSectionUrl(c,'slides')}">${esc(C('course','slides','Nội dung bài giảng'))}</a> · <a href="${courseSectionUrl(c,'support')}">${esc(C('course','support','Hỗ trợ học viên'))}</a></p>`}</div>`;
     return;
   }
   const sectionItem = COURSE_SECTIONS.find(x=>x.id===section) || COURSE_SECTIONS[0];
