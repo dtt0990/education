@@ -306,7 +306,6 @@ function renderHome() {
     <section class="home-social" aria-labelledby="social-title">
       <div class="social-intro"><span class="eyebrow">${esc(DB.portal.social.eyebrow)}</span><h2 id="social-title">${esc(DB.portal.social.title)}</h2><p>${esc(DB.portal.social.description)}</p></div>
       <div class="social-grid">${[['linkedin','LinkedIn','in'],['facebook','Facebook','f']].map(([kind,label,mark])=>`<a class="social-card social-${kind}" href="${esc(DB.portal.social[kind+'Url'])}" target="_blank" rel="noopener noreferrer" aria-label="${esc(C('labels','socialLink','Kết nối qua {platform} (mở trong thẻ mới)').replace('{platform}',label))}"><div class="social-top"><span class="social-symbol" aria-hidden="true">${mark}</span><span class="social-arrow" aria-hidden="true">↗</span></div><div class="social-art" aria-hidden="true"><p>${esc(DB.portal.social[kind+'Art'])}</p></div><div class="social-copy"><p class="social-eyebrow">${esc(DB.portal.social[kind+'Eyebrow'])}</p><h3>${label}</h3><strong class="social-count">${esc(DB.portal.social[kind+'Count'])}</strong><p class="social-count-label">${esc(DB.portal.social.followersLabel)}</p><p class="social-detail">${esc(DB.portal.social[kind+'Detail'])}</p><p class="social-description">${esc(DB.portal.social[kind+'Description'])}</p><small class="social-action">${esc(DB.portal.social.action)} <span aria-hidden="true">↗</span></small></div></a>`).join('')}</div>
-      <p class="social-updated">${esc(DB.portal.social.updatedLabel)}</p>
     </section>
   </div>`;
 }
