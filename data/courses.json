@@ -1335,70 +1335,246 @@
       "number": "04",
       "title": "Kỹ năng thuyết trình, đàm phán thương mại",
       "shortTitle": "Thuyết trình và Đàm phán thương mại",
-      "subtitle": "Trình bày thuyết phục, đàm phán hiệu quả",
-      "description": "Rèn luyện kỹ năng chuẩn bị thông điệp, trình bày trước người nghe và xử lý các tình huống đàm phán trong môi trường thương mại.",
-      "status": "locked",
+      "subtitle": "Trình bày đề xuất hợp tác và thương lượng điều khoản.",
+      "description": "Bạn sẽ thử thuyết phục một doanh nghiệp tài trợ cho ngày hội nghề nghiệp, sau đó thương lượng về ngân sách, gian hàng và quyền lợi truyền thông.",
+      "status": "open",
       "category": "Kỹ năng nghề nghiệp",
-      "duration": "Đang cập nhật",
-      "format": "Chương trình đào tạo/giảng dạy",
-      "method": "Nội dung sẽ được mở sau",
+      "duration": "360 phút, gồm thời gian nghỉ",
+      "format": "02 buổi trực tiếp",
+      "method": "Thực hành theo tình huống",
       "coverImage": "assets/images/course-presentation-negotiation.webp",
       "accent": "orange",
       "lockedMessage": "Nội dung hiện đang tạm khóa, liên hệ quản trị viên để mở.",
       "syllabus": {
-        "overview": "",
-        "objectives": [],
-        "outcomes": [],
-        "sessions": [],
-        "teachingApproach": [],
-        "assessment": [],
+        "overview": "Học phần dành cho sinh viên. Mỗi buổi kéo dài 180 phút, gồm 10 phút nghỉ. Bạn sẽ thử thuyết phục một doanh nghiệp tài trợ cho ngày hội nghề nghiệp, sau đó thương lượng về ngân sách, gian hàng và quyền lợi truyền thông.",
+        "objectives": [
+          "Trình bày đề xuất phù hợp với người ra quyết định.",
+          "Chuẩn bị và thực hiện một cuộc đàm phán thương mại cơ bản."
+        ],
+        "outcomes": [
+          "Nêu được người nghe, ưu tiên của họ và quyết định cần đề nghị.",
+          "Trình bày một đề xuất trong 3 phút, có lợi ích, bằng chứng và bước tiếp theo.",
+          "Xác định mục tiêu, giới hạn chấp nhận và phương án thay thế nếu cuộc đàm phán không thành.",
+          "Đặt câu hỏi, đưa ra đề nghị có điều kiện và xác nhận kết quả thương lượng."
+        ],
+        "sessions": [
+          {
+            "number": 1,
+            "title": "Trình bày đề xuất thương mại",
+            "focus": "20 phút. So sánh hai cách mở đầu cùng một đề xuất. 35 phút. Xác định ưu tiên của người nghe, giá trị đề xuất và bằng chứng. 30 phút. Viết dàn ý. 10 phút. Nghỉ. 65 phút. Luyện bài nói 3 phút, hỏi đáp, nhận góp ý và trình bày lại. 20 phút. Tổng kết và chuẩn bị cho buổi 2.",
+            "output": "Dàn ý một trang và bài nói 3 phút.",
+            "duration": "180 phút"
+          },
+          {
+            "number": 2,
+            "title": "Đàm phán thương mại",
+            "focus": "20 phút. Xem đề nghị mở đầu của hai bên. 35 phút. Làm rõ lợi ích, mục tiêu, giới hạn và phương án thay thế. 25 phút. Chuẩn bị theo vai. 10 phút. Nghỉ. 65 phút. Mô phỏng, đổi vai và nhận góp ý. 25 phút. Viết bản xác nhận kết quả và rút kinh nghiệm.",
+            "output": "Phiếu chuẩn bị và bản xác nhận kết quả.",
+            "duration": "180 phút"
+          }
+        ],
+        "teachingApproach": [
+          "Luyện bài nói theo cặp trước khi mô phỏng theo nhóm.",
+          "Dùng cùng một tình huống trong hai buổi. Phiếu vai được phát riêng khi bắt đầu đàm phán."
+        ],
+        "assessment": [
+          {
+            "name": "Trình bày đề xuất",
+            "weight": "25%",
+            "description": "Nêu rõ lợi ích cho đối tác, dùng đúng dữ kiện và chỉ rõ quyết định cần đề nghị."
+          },
+          {
+            "name": "Chuẩn bị đàm phán",
+            "weight": "20%",
+            "description": "Ghi được mục tiêu, giới hạn và phương án thay thế khả thi."
+          },
+          {
+            "name": "Hỏi và lắng nghe",
+            "weight": "20%",
+            "description": "Đặt câu hỏi về ưu tiên và xác nhận lại ý đối tác."
+          },
+          {
+            "name": "Trao đổi và xử lý bất đồng",
+            "weight": "25%",
+            "description": "Đưa ra nhượng bộ có điều kiện và quyết định trong phạm vi được giao."
+          },
+          {
+            "name": "Xác nhận kết quả",
+            "weight": "10%",
+            "description": "Ghi đúng điều khoản đã chốt, điểm còn mở và bước tiếp theo."
+          }
+        ],
         "projectRubric": []
       },
       "slides": [],
-      "references": [],
-      "support": [],
+      "references": [
+        {
+          "id": "reading-04",
+          "title": "Hướng dẫn đọc tài liệu tham khảo",
+          "language": "Tiếng Việt",
+          "type": "Hướng dẫn đọc",
+          "publisher": "Thanh Đoàn",
+          "description": "Chương 6. Sáng tạo IMC và Chương 11. Bán hàng cá nhân. Có câu hỏi tự kiểm tra.",
+          "url": "assets/resources/MON04_HUONG_DAN_DOC.pdf",
+          "access": "Mở hướng dẫn đọc"
+        }
+      ],
+      "support": [
+        {
+          "id": "outline-04",
+          "title": "Đề cương môn học",
+          "category": "Thông tin môn học",
+          "description": "Chuẩn đầu ra, kế hoạch hai buổi và tiêu chí chấm.",
+          "status": "ready"
+        },
+        {
+          "id": "case-04",
+          "title": "Tình huống và phiếu thực hành",
+          "category": "Bài tập tình huống",
+          "description": "Chuẩn bị bài nói, phiếu thương lượng và xác nhận kết quả.",
+          "status": "ready"
+        },
+        {
+          "id": "consult",
+          "title": "Kết nối với giảng viên",
+          "category": "Trao đổi chuyên môn",
+          "description": "Gửi dàn ý 3 phút hoặc điều khoản đang vướng để nhận góp ý.",
+          "status": "contact",
+          "label": "Kết nối qua Zalo",
+          "icon": "message-circle"
+        }
+      ],
       "tracks": [],
       "lectureAccess": {
         "mode": "enrolled_only",
         "title": "Dành cho học viên tham gia học",
-        "message": "Chỉ học viên tham gia học mới được xem nội dung bài giảng. Sau khi bài giảng được hoàn thiện và cập nhật, giảng viên sẽ thông báo cách truy cập cho từng lớp.",
+        "message": "Giảng viên sẽ cập nhật bài giảng và thông báo cách truy cập cho từng lớp.",
         "action": "Trao đổi với giảng viên"
-      }
+      },
+      "audienceLabel": "Dành cho sinh viên"
     },
     {
       "id": "critical-thinking",
       "number": "05",
       "title": "Kỹ năng phản biện và xử lý vấn đề",
       "shortTitle": "Phản biện và Xử lý vấn đề",
-      "subtitle": "Tư duy có căn cứ, giải quyết đúng trọng tâm",
-      "description": "Rèn luyện khả năng phân tích lập luận, nhận diện vấn đề, đánh giá phương án và đưa ra quyết định.",
-      "status": "locked",
+      "subtitle": "Kiểm tra bằng chứng, tìm nguyên nhân và chọn cách xử lý.",
+      "description": "Một hội thảo có 200 lượt đăng ký nhưng chỉ 70 người đến. Bạn sẽ kiểm tra những cách giải thích khác nhau, rồi đề xuất một cách xử lý có thể thử và đo được.",
+      "status": "open",
       "category": "Tư duy và Giải quyết vấn đề",
-      "duration": "Đang cập nhật",
-      "format": "Chương trình đào tạo/giảng dạy",
-      "method": "Nội dung sẽ được mở sau",
+      "duration": "360 phút, gồm thời gian nghỉ",
+      "format": "02 buổi trực tiếp",
+      "method": "Thực hành theo tình huống",
       "coverImage": "assets/images/course-critical-thinking.webp",
       "accent": "purple",
       "lockedMessage": "Nội dung hiện đang tạm khóa, liên hệ quản trị viên để mở.",
       "syllabus": {
-        "overview": "",
-        "objectives": [],
-        "outcomes": [],
-        "sessions": [],
-        "teachingApproach": [],
-        "assessment": [],
+        "overview": "Học phần dành cho sinh viên. Mỗi buổi kéo dài 180 phút, gồm 10 phút nghỉ. Một hội thảo có 200 lượt đăng ký nhưng chỉ 70 người đến. Bạn sẽ kiểm tra những cách giải thích khác nhau, rồi đề xuất một cách xử lý có thể thử và đo được.",
+        "objectives": [
+          "Rèn tư duy phản biện qua dữ kiện, kết luận và giả định.",
+          "Chẩn đoán vấn đề và ra quyết định trong điều kiện dữ liệu chưa đầy đủ."
+        ],
+        "outcomes": [
+          "Chỉ ra kết luận, bằng chứng và giả định của một lập luận.",
+          "Kiểm tra nguồn, mẫu số và các cách giải thích khác.",
+          "Mô tả chênh lệch giữa mục tiêu và thực tế, đề xuất cách kiểm tra nguyên nhân.",
+          "So sánh ít nhất hai phương án và lập kế hoạch theo dõi có người phụ trách, thời hạn và chỉ số."
+        ],
+        "sessions": [
+          {
+            "number": 1,
+            "title": "Tư duy phản biện và kiểm tra bằng chứng",
+            "focus": "20 phút. Bỏ phiếu về một nhận định và giải thích. 35 phút. Tách kết luận, bằng chứng và giả định. 30 phút. Kiểm tra nguồn dữ liệu và mẫu số. 10 phút. Nghỉ. 65 phút. Chất vấn chéo, nhận dữ liệu mới và sửa kết luận. 20 phút. Viết câu hỏi cần trả lời trước khi quyết định.",
+            "output": "Phiếu phân tích lập luận và kết luận đã sửa.",
+            "duration": "180 phút"
+          },
+          {
+            "number": 2,
+            "title": "Chẩn đoán và xử lý vấn đề",
+            "focus": "20 phút. Viết phát biểu vấn đề có số liệu. 35 phút. Đặt giả thuyết nguyên nhân và chọn cách kiểm tra. 25 phút. Thống nhất tiêu chí rồi so sánh phương án. 10 phút. Nghỉ. 65 phút. Làm tình huống và bảo vệ lựa chọn. 25 phút. Hoàn thiện kế hoạch và chỉ số theo dõi.",
+            "output": "Đề xuất xử lý vấn đề dài một trang.",
+            "duration": "180 phút"
+          }
+        ],
+        "teachingApproach": [
+          "Phân tích dữ liệu giả định, chất vấn theo nhóm và cập nhật kết luận khi nhận thêm thông tin.",
+          "Đánh giá cách sinh viên dùng bằng chứng, giải thích giả định và theo dõi quyết định."
+        ],
+        "assessment": [
+          {
+            "name": "Phát biểu vấn đề",
+            "weight": "20%",
+            "description": "Nêu được chênh lệch giữa mục tiêu và thực tế, dùng đúng đơn vị và mẫu số."
+          },
+          {
+            "name": "Kiểm tra bằng chứng",
+            "weight": "25%",
+            "description": "Tách điều đã biết, giả định và giới hạn dữ liệu."
+          },
+          {
+            "name": "Chẩn đoán nguyên nhân",
+            "weight": "25%",
+            "description": "Nêu được ít nhất hai giả thuyết và đề xuất cách kiểm tra phù hợp."
+          },
+          {
+            "name": "So sánh và lựa chọn",
+            "weight": "20%",
+            "description": "Dùng cùng tiêu chí để so sánh ít nhất hai phương án và giải thích lựa chọn."
+          },
+          {
+            "name": "Kế hoạch theo dõi",
+            "weight": "10%",
+            "description": "Nêu người phụ trách, thời hạn, chỉ số và cách thu dữ liệu."
+          }
+        ],
         "projectRubric": []
       },
       "slides": [],
-      "references": [],
-      "support": [],
+      "references": [
+        {
+          "id": "reading-05",
+          "title": "Hướng dẫn đọc tài liệu tham khảo",
+          "language": "Tiếng Việt",
+          "type": "Hướng dẫn đọc",
+          "publisher": "Thanh Đoàn",
+          "description": "Bài 3. Thu thập và đánh giá dữ liệu thứ cấp và Bài 8. Phân tích dữ liệu. Có câu hỏi tự kiểm tra.",
+          "url": "assets/resources/MON05_HUONG_DAN_DOC.pdf",
+          "access": "Mở hướng dẫn đọc"
+        }
+      ],
+      "support": [
+        {
+          "id": "outline-05",
+          "title": "Đề cương môn học",
+          "category": "Thông tin môn học",
+          "description": "Chuẩn đầu ra, kế hoạch hai buổi và tiêu chí chấm.",
+          "status": "ready"
+        },
+        {
+          "id": "case-05",
+          "title": "Tình huống và phiếu thực hành",
+          "category": "Bài tập tình huống",
+          "description": "Đọc số liệu hội thảo, kiểm tra lập luận và đề xuất cách xử lý.",
+          "status": "ready"
+        },
+        {
+          "id": "consult",
+          "title": "Kết nối với giảng viên",
+          "category": "Trao đổi chuyên môn",
+          "description": "Gửi phát biểu vấn đề, dữ kiện và điểm còn phân vân để nhận góp ý.",
+          "status": "contact",
+          "label": "Kết nối qua Zalo",
+          "icon": "message-circle"
+        }
+      ],
       "tracks": [],
       "lectureAccess": {
         "mode": "enrolled_only",
         "title": "Dành cho học viên tham gia học",
-        "message": "Chỉ học viên tham gia học mới được xem nội dung bài giảng. Sau khi bài giảng được hoàn thiện và cập nhật, giảng viên sẽ thông báo cách truy cập cho từng lớp.",
+        "message": "Giảng viên sẽ cập nhật bài giảng và thông báo cách truy cập cho từng lớp.",
         "action": "Trao đổi với giảng viên"
-      }
+      },
+      "audienceLabel": "Dành cho sinh viên"
     },
     {
       "id": "effective-learning-entrepreneurship",

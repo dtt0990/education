@@ -1074,33 +1074,203 @@
       "title": "Presentation and Business Negotiation Skills",
       "shortTitle": "Presentation and Business Negotiation",
       "category": "Professional Skills",
-      "description": "Learn to prepare a message, present it to an audience and navigate business negotiations.",
+      "description": "Pitch a business sponsorship for a career fair, then negotiate the budget, booth space and publicity benefits.",
       "lectureAccess": {
         "title": "Lectures for enrolled learners",
         "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
         "action": "Contact the lecturer"
       },
-      "subtitle": "Present persuasively and negotiate effectively",
-      "duration": "Coming soon",
-      "format": "Training and courses",
-      "method": "Content will open later",
-      "lockedMessage": "Contact the administrator to request access."
+      "subtitle": "Present a partnership proposal and negotiate its terms.",
+      "duration": "360 minutes including breaks",
+      "format": "Two in-person sessions",
+      "method": "Case-based practice",
+      "lockedMessage": "Contact the administrator to request access.",
+      "audienceLabel": "For university students",
+      "syllabus": {
+        "overview": "This course is designed for university students. Each session lasts 180 minutes, including a 10-minute break. Pitch a business sponsorship for a career fair, then negotiate the budget, booth space and publicity benefits.",
+        "objectives": [
+          "Present a proposal tailored to a decision-maker.",
+          "Prepare for and conduct a basic business negotiation."
+        ],
+        "outcomes": [
+          "Identify the audience, its priorities and the decision you are asking it to make.",
+          "Deliver a three-minute proposal with benefits, evidence and a next step.",
+          "Define your goal, minimum acceptable outcome and alternative if no agreement is reached.",
+          "Ask questions, make conditional offers and confirm the outcome."
+        ],
+        "teachingApproach": [
+          "Practice the pitch in pairs before the group simulation.",
+          "Use the same case in both sessions. Separate role briefs are handed out at the start of the negotiation."
+        ],
+        "sessions": [
+          {
+            "number": 1,
+            "title": "Presenting a business proposal",
+            "focus": "20 min: Compare two openings for the same proposal. 35 min: Identify audience priorities, value and evidence. 30 min: Draft an outline. 10 min: Break. 65 min: Practice the three-minute pitch, answer questions, get feedback and present again. 20 min: Review and prepare for session 2.",
+            "output": "A one-page outline and a three-minute pitch.",
+            "duration": "180 minutes"
+          },
+          {
+            "number": 2,
+            "title": "Business negotiation",
+            "focus": "20 min: Review both opening offers. 35 min: Clarify interests, goals, limits and alternatives. 25 min: Prepare in role. 10 min: Break. 65 min: Simulate, swap roles and get feedback. 25 min: Write a confirmation and reflect.",
+            "output": "A preparation worksheet and written confirmation.",
+            "duration": "180 minutes"
+          }
+        ],
+        "assessment": [
+          {
+            "name": "Proposal delivery",
+            "description": "Explain the benefits for the partner, use the facts accurately and make a clear request."
+          },
+          {
+            "name": "Negotiation preparation",
+            "description": "Record the goal, limits and a feasible alternative."
+          },
+          {
+            "name": "Questioning and listening",
+            "description": "Ask about priorities and confirm what the partner means."
+          },
+          {
+            "name": "Bargaining and resolving disagreements",
+            "description": "Offer conditional concessions and stay within your mandate."
+          },
+          {
+            "name": "Confirming the outcome",
+            "description": "Record agreed terms, open issues and next steps."
+          }
+        ]
+      },
+      "references": [
+        {
+          "id": "reading-04",
+          "title": "Guide to the reference readings",
+          "type": "Reading guide",
+          "description": "Chapter 6: Creative IMC, and Chapter 11: Personal Selling. Includes self-check questions.",
+          "access": "Open reading guide"
+        }
+      ],
+      "support": [
+        {
+          "id": "outline-04",
+          "title": "Course syllabus",
+          "category": "Course information",
+          "description": "Learning outcomes, two-session plan and assessment criteria."
+        },
+        {
+          "id": "case-04",
+          "title": "Case and practice worksheets",
+          "category": "Case exercise",
+          "description": "Prepare a pitch, a negotiation worksheet and a written confirmation."
+        },
+        {
+          "id": "consult",
+          "title": "Contact the lecturer",
+          "category": "Academic support",
+          "description": "Send your three-minute outline or a term you are struggling with for feedback."
+        }
+      ]
     },
     "critical-thinking": {
       "title": "Critical Thinking and Problem Solving",
       "shortTitle": "Critical Thinking and Problem Solving",
       "category": "Thinking and Problem Solving",
-      "description": "Analyze arguments, identify problems, evaluate options and make decisions.",
+      "description": "A workshop received 200 registrations and only 70 people attended. Test competing explanations and propose a response you can try and measure.",
       "lectureAccess": {
         "title": "Lectures for enrolled learners",
         "message": "Only learners enrolled in the course can view lecture content. Contact the lecturer for access.",
         "action": "Contact the lecturer"
       },
-      "subtitle": "Think critically and focus on the right problem",
-      "duration": "Coming soon",
-      "format": "Training and courses",
-      "method": "Content will open later",
-      "lockedMessage": "Contact the administrator to request access."
+      "subtitle": "Check evidence, diagnose causes and choose a response.",
+      "duration": "360 minutes including breaks",
+      "format": "Two in-person sessions",
+      "method": "Case-based practice",
+      "lockedMessage": "Contact the administrator to request access.",
+      "audienceLabel": "For university students",
+      "syllabus": {
+        "overview": "This course is designed for university students. Each session lasts 180 minutes, including a 10-minute break. A workshop received 200 registrations and only 70 people attended. Test competing explanations and propose a response you can try and measure.",
+        "objectives": [
+          "Practice critical thinking using facts, conclusions and assumptions.",
+          "Diagnose problems and make decisions with incomplete data."
+        ],
+        "outcomes": [
+          "Identify the conclusion, evidence and assumptions in an argument.",
+          "Check sources, denominators and alternative explanations.",
+          "Describe the gap between target and actual results and propose a way to test possible causes.",
+          "Compare at least two options and create a follow-up plan with an owner, deadline and metric."
+        ],
+        "teachingApproach": [
+          "Analyze simulated data, challenge the reasoning in groups and update conclusions as new information comes in.",
+          "Assess how students use evidence, explain assumptions and follow up on decisions."
+        ],
+        "sessions": [
+          {
+            "number": 1,
+            "title": "Critical thinking and checking evidence",
+            "focus": "20 min: Vote on a claim and explain your reasoning. 35 min: Separate conclusion, evidence and assumptions. 30 min: Check data sources and denominators. 10 min: Break. 65 min: Challenge each other’s reasoning, review new data and revise the conclusion. 20 min: Write the questions to answer before deciding.",
+            "output": "An argument-analysis worksheet and revised conclusion.",
+            "duration": "180 minutes"
+          },
+          {
+            "number": 2,
+            "title": "Diagnosing and addressing a problem",
+            "focus": "20 min: Write a problem statement supported by numbers. 35 min: Form hypotheses and choose how to test them. 25 min: Agree on criteria and compare options. 10 min: Break. 65 min: Work through the case and defend your choice. 25 min: Finalize the plan and tracking metrics.",
+            "output": "A one-page proposal for addressing the problem.",
+            "duration": "180 minutes"
+          }
+        ],
+        "assessment": [
+          {
+            "name": "Problem statement",
+            "description": "State the gap between target and actual results using the correct units and denominator."
+          },
+          {
+            "name": "Checking evidence",
+            "description": "Separate known facts, assumptions and data limitations."
+          },
+          {
+            "name": "Diagnosing causes",
+            "description": "Propose at least two hypotheses and a suitable way to test them."
+          },
+          {
+            "name": "Comparing and choosing",
+            "description": "Apply the same criteria to at least two options and explain your choice."
+          },
+          {
+            "name": "Follow-up plan",
+            "description": "Identify the owner, deadline, metric and data collection method."
+          }
+        ]
+      },
+      "references": [
+        {
+          "id": "reading-05",
+          "title": "Guide to the reference readings",
+          "type": "Reading guide",
+          "description": "Lesson 3: Collecting and Evaluating Secondary Data, and Lesson 8: Data Analysis. Includes self-check questions.",
+          "access": "Open reading guide"
+        }
+      ],
+      "support": [
+        {
+          "id": "outline-05",
+          "title": "Course syllabus",
+          "category": "Course information",
+          "description": "Learning outcomes, two-session plan and assessment criteria."
+        },
+        {
+          "id": "case-05",
+          "title": "Case and practice worksheets",
+          "category": "Case exercise",
+          "description": "Review the workshop data, test the argument and propose a response."
+        },
+        {
+          "id": "consult",
+          "title": "Contact the lecturer",
+          "category": "Academic support",
+          "description": "Send your problem statement, evidence and open questions for feedback."
+        }
+      ]
     },
     "effective-learning-entrepreneurship": {
       "title": "Effective Learning and Innovative Entrepreneurship",
